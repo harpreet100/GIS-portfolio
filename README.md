@@ -1,25 +1,43 @@
 # Harpreet Singh | GIS Portfolio
 
-Welcome to my GIS Portfolio.
+This repository contains my GIS portfolio website.
 
-This website showcases projects completed using Geographic Information Systems (GIS), remote sensing, spatial analysis, cartography, and automation workflows. The portfolio highlights academic, personal, and professional projects that demonstrate problem solving, spatial thinking, data visualization, and geospatial analysis skills.
+The portfolio presents selected work and experience involving municipal GIS, spatial analysis, cartography, GIS automation, transportation data, web GIS, and remote sensing.
 
-## Featured Skills
+## Live Portfolio
+
+https://harpreet100.github.io/GIS-portfolio/
+
+## Featured Experience and Projects
+
+- GIS Practicum at Rocky View County
+- Crime Incident Analysis and ArcPy Automation
+- Calgary Transit GIS and Real-Time Data
+- Remote Sensing Analysis
+
+## Technical Skills
 
 - ArcGIS Pro
-- ArcPy
-- Python
-- Remote Sensing
-- Spatial Analysis
+- ArcGIS Online
+- ArcGIS Experience Builder
+- ArcGIS Field Maps
+- Spatial analysis
 - Cartography
-- Data Management
-- Web Mapping
-- SQL
+- Python
+- ArcPy
+- FME
+- FME Flow
+- Web GIS
+- Geodatabases
+- Git and GitHub
+- HTML, CSS, and JavaScript
 
-## Portfolio Website
+## Professional Focus
 
-Visit the live portfolio: https://harpreet100.github.io/GIS-portfolio/
+I am pursuing GIS analyst opportunities where spatial analysis, data management, cartography, web GIS, and automation support practical organizational and operational decision-making.
 
-## About Me
+## Contact
 
-I am a GIS student and aspiring geospatial professional with experience in spatial analysis, GIS automation, cartography, and remote sensing. My goal is to apply GIS and technology to solve real-world problems through data-driven decision making.
+- GitHub: https://github.com/harpreet100
+- LinkedIn: https://www.linkedin.com/in/harpreet-singh-894583255/
+- Portfolio: https://harpreet100.github.io/GIS-portfolio/

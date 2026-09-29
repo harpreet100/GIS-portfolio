@@ -1,41 +1,62 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Mobile Menu Toggle
-    const menuToggle = document.getElementById("mobile-menu");
-    const navLinks = document.querySelector(".nav-links");
+// Mobile navigation
 
-    if (menuToggle) {
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
+const menuButton = document.getElementById("mobile-menu");
+const navigation = document.querySelector(".nav-links");
+
+if (menuButton && navigation) {
+    menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("open");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+    });
+
+    // Close the mobile menu after selecting a navigation link
+    navigation.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navigation.classList.remove("open");
+            menuButton.setAttribute("aria-expanded", "false");
         });
-    }
+    });
+}
 
-    // 2. Project Filtering Logic
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    const projectItems = document.querySelectorAll(".project-item");
 
-    if (filterBtns.length > 0 && projectItems.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove("active"));
-                // Add active class to clicked button
-                btn.classList.add("active");
+// Project filtering
 
-                const filterValue = btn.getAttribute("data-filter");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectItems = document.querySelectorAll(".project-item");
 
-                projectItems.forEach(item => {
-                    const categories = item.getAttribute("data-category");
-                    
-                    if (filterValue === "all" || categories.includes(filterValue)) {
-                        item.style.display = "block";
-                        // Brief timeout for smooth reflow/animation if desired later
-                        setTimeout(() => item.style.opacity = "1", 10);
-                    } else {
-                        item.style.opacity = "0";
-                        setTimeout(() => item.style.display = "none", 300);
-                    }
-                });
-            });
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const selectedFilter = button.dataset.filter;
+
+        filterButtons.forEach(function (filterButton) {
+            filterButton.classList.remove("active");
         });
-    }
+
+        button.classList.add("active");
+
+        projectItems.forEach(function (project) {
+            const categories = project.dataset.category
+                .split(" ")
+                .filter(Boolean);
+
+            const shouldDisplay =
+                selectedFilter === "all" ||
+                categories.includes(selectedFilter);
+
+            project.style.display = shouldDisplay
+                ? "flex"
+                : "none";
+        });
+    });
+});
+
+
+// Automatically update the copyright year
+
+document.querySelectorAll("[data-year]").forEach(function (element) {
+    element.textContent = new Date().getFullYear();
 });
