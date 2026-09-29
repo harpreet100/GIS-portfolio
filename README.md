@@ -18,9 +18,7 @@ This website showcases projects completed using Geographic Information Systems (
 
 ## Portfolio Website
 
-Visit the live portfolio:
-
-https://harpreet100.github.io/GIS-portfolio/
+Visit the live portfolio: https://harpreet100.github.io/GIS-portfolio/
 
 ## About Me
 
