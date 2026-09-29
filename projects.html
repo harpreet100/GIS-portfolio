@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Harpreet Singh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">HARPREET SINGH</a>
+            <button class="menu-toggle" id="mobile-menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="projects.html" class="active">PROJECTS</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="index.html#skills">SKILLS</a></li>
+                <li><a href="index.html#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="bg-offset" style="padding: 4rem 0;">
+        <div class="container">
+            <h1>Portfolio Projects</h1>
+            <p>A selection of work demonstrating spatial analysis, cartography, and programmatic GIS automation.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <!-- JavaScript Filtering -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="analysis">GIS ANALYSIS</button>
+            <button class="filter-btn" data-filter="cartography">CARTOGRAPHY</button>
+            <button class="filter-btn" data-filter="automation">AUTOMATION</button>
+            <button class="filter-btn" data-filter="python">PYTHON</button>
+            <button class="filter-btn" data-filter="web">WEB GIS</button>
+            <button class="filter-btn" data-filter="data">DATA</button>
+        </div>
+
+        <div class="grid-3" id="project-grid">
+            
+            <!-- Project 1 -->
+            <div class="card project-card project-item" data-category="automation python data">
+                <div class="project-img">[IMAGE: assets/images/transit-thumbnail.png]</div>
+                <div class="project-content">
+                    <span class="project-category">GIS • Python • Automation</span>
+                    <h3>Calgary Transit GIS & Real-Time Data</h3>
+                    <p>A GIS workflow exploring Calgary Transit static and real-time transit data using ArcGIS and Python.</p>
+                    <div class="project-actions">
+                        <a href="projects/transit.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card project-card project-item" data-category="analysis cartography">
+                <div class="project-img">[IMAGE: assets/images/crime-thumbnail.png]</div>
+                <div class="project-content">
+                    <span class="project-category">Spatial Analysis • Cartography</span>
+                    <h3>Calgary Crime & Socio-Demographic Analysis</h3>
+                    <p>Examine spatial relationships between crime patterns and selected demographic/accessibility factors in Calgary.</p>
+                    <div class="project-actions">
+                        <a href="projects/crime-analysis.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="card project-card project-item" data-category="automation python data">
+                <div class="project-img">[IMAGE: assets/images/automation-thumbnail.png]</div>
+                <div class="project-content">
+                    <span class="project-category">Python • ArcPy • Development</span>
+                    <h3>GIS Automation Toolkit</h3>
+                    <p>A collection of Python/ArcPy utilities designed to reduce repetitive GIS workflows.</p>
+                    <div class="project-actions">
+                        <a href="projects/gis-automation.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="card project-card project-item" data-category="automation python cartography">
+                <div class="project-img">[IMAGE: assets/images/legal-thumbnail.png]</div>
+                <div class="project-content">
+                    <span class="project-category">ArcGIS Pro • ArcPy</span>
+                    <h3>Automated Legal Description Mapping</h3>
+                    <p>Automate the creation of maps and layout generation based on legal descriptions.</p>
+                    <div class="project-actions">
+                        <a href="projects/legal-description.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="card project-card project-item" data-category="web cartography analysis">
+                <div class="project-img">[IMAGE: assets/images/storymap-thumbnail.png]</div>
+                <div class="project-content">
+                    <span class="project-category">ArcGIS Online • StoryMaps</span>
+                    <h3>Calgary Transit StoryMap</h3>
+                    <p>A public-facing GIS story explaining aspects of Calgary's transit network and accessibility.</p>
+                    <div class="project-actions">
+                        <a href="projects/storymap.html" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 style="margin-top: 4rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">Additional GIS Work</h3>
+        <div class="grid-4" style="margin-top: 1.5rem;">
+            <div class="card" style="padding: 1rem;"><strong>GIS Data Conversion</strong><br><small class="text-light">Raster/Vector processing</small></div>
+            <div class="card" style="padding: 1rem;"><strong>Spatial Database Exercises</strong><br><small class="text-light">SQL and Geodatabases</small></div>
+            <div class="card" style="padding: 1rem;"><strong>Geocoding Projects</strong><br><small class="text-light">Address matching</small></div>
+            <div class="card" style="padding: 1rem;"><strong>ArcGIS Online</strong><br><small class="text-light">Web map configuration</small></div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Harpreet Singh.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
