@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spatial Analysis of Auto Theft in Toronto (2024) | Harpreet Singh</title>
+    <meta
+        name="description"
+        content="Toronto 2024 auto theft hotspot analysis (Getis-Ord Gi*) across 158 neighbourhoods and TTC commuter parking proximity modeling using a custom Albers Equal Area Conic projection in ArcGIS Pro."
+    >
+
+    <meta property="og:title" content="Toronto 2024 Auto Theft Hotspot &amp; TTC Parking Proximity Analysis">
+    <meta
+        property="og:description"
+        content="Getis-Ord Gi* hotspot clustering and multiple-ring buffer density modeling around TTC commuter parking lots."
+    >
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="../index.html" class="logo">
+                HARPREET SINGH
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
+            </a>
+
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../projects.html" class="active">Projects</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../index.html#skills">Capabilities</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="topo-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="eyebrow">Case Study &middot; Spatial Statistics &amp; Cartography</div>
+                <h1>Spatial Analysis of Auto Theft in Toronto (2024): Neighbourhood Hotspots &amp; TTC Commuter Parking Proximity</h1>
+                <p>
+                    Empirical hotspot clustering across 158 Toronto neighbourhoods and area-normalized
+                    distance-decay modeling around TTC commuter parking lots. Co-authored with
+                    Gopichand Yalamanchili (SAIT BGIS, April 2026).
+                </p>
+                <div class="project-tags" style="margin-top: 1.25rem;">
+                    <span class="tag">ArcGIS Pro</span>
+                    <span class="tag">Getis-Ord Gi*</span>
+                    <span class="tag">Custom Albers Projection</span>
+                    <span class="tag">Spatial Statistics</span>
+                    <span class="tag">Cartographic Layout</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container case-layout prose">
+                <!-- 4-Stage Pipeline Summary -->
+                <div class="pipeline-grid">
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">01 / Problem</span>
+                        <h3>2024 Auto Theft Surge</h3>
+                        <p>
+                            Identify statistically significant theft clusters across 158
+                            neighbourhoods and test proximity to TTC commuter lots.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">02 / Pipeline</span>
+                        <h3>Equal-Area &amp; Geocoding</h3>
+                        <p>
+                            Custom Toronto Albers projection (1/6 rule), clipped 2024 TPS records,
+                            and geocoded TTC commuter lots.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">03 / Architecture</span>
+                        <h3>Gi* &amp; Ring Buffers</h3>
+                        <p>
+                            Getis-Ord Gi* (4,000 m fixed band) plus non-overlapping 1/2/3 km buffers
+                            normalized by ring area (thefts/km&sup2;).
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">04 / Result</span>
+                        <h3>Quantified Decay</h3>
+                        <p>
+                            99% hotspot in West Humber-Clairville and 21.22 thefts/km&sup2; within
+                            0&ndash;1 km of TTC lots (~40% drop beyond 1 km).
+                        </p>
+                    </div>
+                </div>
+
+                <h2>1. Operational Problem</h2>
+                <p>
+                    Auto theft surged across Toronto in 2024, requiring statistical identification of
+                    high-risk clusters across all 158 official city neighbourhoods and an empirical
+                    test of whether proximity to TTC commuter parking lots drives higher theft
+                    concentration. Raw incident counts alone risk misleading conclusions without
+                    distortion-free area normalization and formal spatial autocorrelation testing.
+                </p>
+
+                <h2>2. Data &amp; Spatial Pipeline</h2>
+                <ol>
+                    <li>
+                        <strong>Incident &amp; Boundary Ingestion:</strong> Ingested 2024 auto
+                        theft point records from the Toronto Police Service Public Safety Data
+                        Portal (<code>Select By Attributes</code> for 2024, clipped to Toronto
+                        municipal boundaries) and 158 official neighbourhood polygons from the City
+                        of Toronto Open Data Portal.
+                    </li>
+                    <li>
+                        <strong>Commuter Lot Geocoding:</strong> Geocoded TTC commuter parking lot
+                        locations from official station addresses into a point feature class via
+                        <code>XY Table To Point</code>.
+                    </li>
+                    <li>
+                        <strong>Custom Equal-Area Projection:</strong> Designed a custom
+                        <strong>Toronto Albers Equal Area Conic (NAD83)</strong> projection using
+                        the 1/6 rule to guarantee distortion-free area (km&sup2;) calculations across
+                        the municipal extent.
+                    </li>
+                    <li>
+                        <strong>Hotspot Clustering:</strong> Executed a neighbourhood
+                        <code>Spatial Join</code> followed by <strong>Getis-Ord Gi* Hot Spot
+                        Analysis</strong> using a 4,000 m fixed distance band.
+                    </li>
+                    <li>
+                        <strong>Area-Normalized Proximity Buffers:</strong> Generated
+                        non-overlapping <strong>1 km, 2 km, and 3 km Multiple Ring Buffers</strong>
+                        around TTC commuter lots and normalized incident counts by ring area
+                        (thefts/km&sup2;) to eliminate outer-ring area bias.
+                    </li>
+                </ol>
+
+                <h2>3. Quantified Findings &amp; Key Metrics</h2>
+                <div class="grid-3" style="margin: 1.5rem 0 2.25rem;">
+                    <div class="card">
+                        <span class="eyebrow">Distribution</span>
+                        <h3 style="margin-top: 0.5rem;">Right-Skewed Concentration</h3>
+                        <p style="font-size: 0.92rem;">
+                            Across 158 neighbourhoods, <strong>114</strong> recorded 2&ndash;65
+                            incidents while extreme western outliers reached
+                            <strong>251&ndash;650</strong> stolen vehicles.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="eyebrow">Getis-Ord Gi*</span>
+                        <h3 style="margin-top: 0.5rem;">99% Confidence Hotspot</h3>
+                        <p style="font-size: 0.92rem;">
+                            Confirmed a statistically significant hotspot cluster (<em>p</em> &lt;
+                            0.01) in <strong>West Humber-Clairville</strong> and a secondary
+                            90&ndash;95% cluster in the northeast, contrasted against a 99% cold
+                            spot in the downtown core.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="eyebrow">TTC Proximity</span>
+                        <h3 style="margin-top: 0.5rem;">21.22 thefts/km&sup2; Peak</h3>
+                        <p style="font-size: 0.92rem;">
+                            Density peaks at <strong>21.22 thefts/km&sup2;</strong> within
+                            0&ndash;1 km of TTC commuter lots, dropping nearly 40% to
+                            <strong>13.05</strong> (1&ndash;2 km) and <strong>13.61</strong>
+                            (2&ndash;3 km).
+                        </p>
+                    </div>
+                </div>
+
+                <h2>4. Cartographic Deliverables Gallery</h2>
+                <p>
+                    Production layouts exported from ArcGIS Pro in the custom Toronto Albers Equal
+                    Area Conic projection:
+                </p>
+
+                <div class="grid-2" style="margin: 1.5rem 0 2rem;">
+                    <figure class="card" style="margin: 0; padding: 1rem;">
+                        <a href="../assets/toronto-auto-theft/toronto-auto-theft-choropleth.png" target="_blank" rel="noopener noreferrer">
+                            <img
+                                src="../assets/toronto-auto-theft/toronto-auto-theft-choropleth.png"
+                                alt="Choropleth map showing the spatial distribution of 2024 auto thefts across 158 Toronto neighbourhoods with a right-skewed histogram"
+                                loading="lazy"
+                                style="border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);"
+                            >
+                        </a>
+                        <figcaption class="text-muted" style="font-size: 0.84rem; margin-top: 0.75rem;">
+                            <strong>Figure 1:</strong> Spatial distribution of 2024 auto thefts across
+                            158 Toronto neighbourhoods (Scale 1:188,000, Albers Equal Area Conic).
+                        </figcaption>
+                    </figure>
+
+                    <figure class="card" style="margin: 0; padding: 1rem;">
+                        <a href="../assets/toronto-auto-theft/ttc-parking-buffer-density.png" target="_blank" rel="noopener noreferrer">
+                            <img
+                                src="../assets/toronto-auto-theft/ttc-parking-buffer-density.png"
+                                alt="Proximity map showing 1 km, 2 km, and 3 km non-overlapping buffers around TTC commuter parking lots and normalized auto theft density"
+                                loading="lazy"
+                                style="border-radius: var(--radius-sm); border: 1px solid var(--border-hairline);"
+                            >
+                        </a>
+                        <figcaption class="text-muted" style="font-size: 0.84rem; margin-top: 0.75rem;">
+                            <strong>Figure 2:</strong> Multiple-ring buffer density (1 km, 2 km, 3 km)
+                            around TTC commuter parking lots showing distance decay from 21.22 to
+                            13.05 thefts/km&sup2;.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="hero-actions">
+                    <a
+                        href="../assets/toronto-auto-theft/Toronto_Auto_Theft_Spatial_Analysis_Report.pdf"
+                        class="btn btn-amber"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Download Full Technical Report (PDF)
+                    </a>
+                    <a href="../projects.html" class="btn btn-primary">&larr; Back to All Projects</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row">
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

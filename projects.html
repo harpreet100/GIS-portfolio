@@ -112,7 +112,7 @@
                     </div>
 
                     <span class="filter-status" id="filter-status" aria-live="polite">
-                        Showing 7 of 7 case studies
+                        Showing 8 of 8 case studies
                     </span>
                 </div>
 
@@ -154,6 +154,49 @@
 
                             <div class="project-actions">
                                 <a href="./projects/practicum.html" class="btn btn-primary btn-small">
+                                    View Case Study
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Toronto 2024 Auto Theft Hotspot & TTC Parking Proximity -->
+                    <article
+                        class="card project-card project-item"
+                        data-category="analysis"
+                    >
+                        <div class="project-visual" style="padding: 0;">
+                            <img
+                                src="./assets/toronto-auto-theft/toronto-auto-theft-choropleth.png"
+                                alt="Toronto 2024 Auto Theft Choropleth Map"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="project-content">
+                            <span class="project-category">Spatial Statistics &middot; Hotspot &amp; Proximity</span>
+                            <h3>Toronto Auto Theft Hotspots &amp; TTC Parking Proximity (2024)</h3>
+                            <p class="project-summary">
+                                Getis-Ord Gi* hotspot clustering across 158 Toronto neighbourhoods and
+                                area-normalized 1/2/3 km ring buffer density modeling around TTC
+                                commuter parking lots.
+                            </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>2024 auto theft clustering &amp; transit lot risk</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>Albers Equal-Area &rarr; Gi* &rarr; 1/2/3 km Buffers</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>99% hotspot &amp; 21.22 thefts/km&sup2; (&le;1 km)</span></div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="tag">ArcGIS Pro</span>
+                                <span class="tag">Getis-Ord Gi*</span>
+                                <span class="tag">Albers Projection</span>
+                                <span class="tag">Cartography</span>
+                            </div>
+
+                            <div class="project-actions">
+                                <a href="./projects/toronto-auto-theft.html" class="btn btn-primary btn-small">
                                     View Case Study
                                 </a>
                             </div>
