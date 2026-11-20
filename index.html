@@ -27,11 +27,10 @@
         rel="stylesheet"
     >
 
-    <!-- Leaflet Web-GIS Library -->
+    <!-- MapLibre GL JS v4.7.1 (WebGL 3D) -->
     <link
         rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
         crossorigin=""
     >
 
@@ -172,18 +171,18 @@
             </div>
         </section>
 
-        <!-- Interactive Featured Map Component -->
+        <!-- Interactive Web-GIS Workbench -->
         <section id="interactive-map">
             <div class="container">
                 <div class="section-header-row">
                     <div>
-                        <div class="eyebrow">Interactive Web-GIS Demo</div>
-                        <h2>Calgary Transit Catchment Explorer</h2>
+                        <div class="eyebrow">WebGL 3D &amp; Client-Side Geoprocessing</div>
+                        <h2>Interactive Spatial Workbench</h2>
                         <p class="section-intro">
-                            Live Leaflet map consuming a structured GeoJSON layer
-                            (<code>./assets/data/sample-gis-layer.geojson</code>) with basemap
-                            switching, layer toggles, attribute popups, and real-time cursor
-                            coordinates.
+                            Powered by <strong>MapLibre GL JS</strong>, <strong>OpenFreeMap</strong>
+                            vector tiles, and <strong>Turf.js</strong>. Run real-time catchment
+                            buffers against live City of Calgary Open Data or fly through 3D
+                            project waypoints.
                         </p>
                     </div>
                     <a href="./projects/transit.html" class="btn btn-secondary btn-small">
@@ -193,86 +192,169 @@
 
                 <div class="map-showcase">
                     <div class="map-toolbar">
-                        <div class="map-toolbar-group" role="group" aria-label="Basemap switcher">
-                            <span class="toolbar-label">Basemap:</span>
-                            <button type="button" class="map-btn" data-basemap="light" aria-pressed="true">
-                                Light Canvas
-                            </button>
-                            <button type="button" class="map-btn" data-basemap="dark" aria-pressed="false">
-                                Dark Canvas
-                            </button>
-                            <button type="button" class="map-btn" data-basemap="street" aria-pressed="false">
-                                Street
-                            </button>
-                            <button type="button" class="map-btn" data-basemap="satellite" aria-pressed="false">
-                                Satellite
-                            </button>
+                        <div class="map-toolbar-group" role="group" aria-label="Workbench mode switcher">
+                            <div class="segmented-toggle">
+                                <button
+                                    type="button"
+                                    class="segmented-btn active"
+                                    data-mode="sandbox"
+                                    aria-pressed="true"
+                                >
+                                    Spatial Buffer Sandbox
+                                </button>
+                                <button
+                                    type="button"
+                                    class="segmented-btn"
+                                    data-mode="flythrough"
+                                    aria-pressed="false"
+                                >
+                                    3D Project Fly-Through
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="map-toolbar-group">
-                            <button type="button" class="map-btn" id="map-reset-btn">
-                                Reset Extent
+                        <div class="map-toolbar-group" role="group" aria-label="Vector style and 3D tilt controls">
+                            <span class="toolbar-label">Style:</span>
+                            <button type="button" class="map-btn active" data-style="liberty" aria-pressed="true">
+                                3D Liberty
+                            </button>
+                            <button type="button" class="map-btn" data-style="positron" aria-pressed="false">
+                                Light
+                            </button>
+                            <button type="button" class="map-btn" data-style="dark" aria-pressed="false">
+                                Dark
+                            </button>
+                            <button type="button" class="map-btn active" id="map-tilt-btn" aria-pressed="true">
+                                2D / 3D Tilt
                             </button>
                         </div>
                     </div>
 
                     <div class="map-workspace">
                         <div class="map-canvas-wrap">
-                            <div id="gis-map" role="region" aria-label="Interactive Calgary transit spatial analysis map"></div>
+                            <div id="gis-map" role="region" aria-label="Interactive MapLibre 3D Web-GIS workbench"></div>
                         </div>
 
-                        <aside class="map-sidebar" aria-label="Map layer controls">
-                            <div>
-                                <h3>Operational Layers</h3>
-                                <p class="text-muted" style="font-size: 0.82rem; margin-bottom: 0.75rem;">
-                                    Toggle vector layers or click any feature to inspect its attribute schema.
-                                </p>
+                        <aside class="map-sidebar" aria-label="Workbench controls and telemetry">
+                            <!-- Mode A: Spatial Buffer Sandbox -->
+                            <div id="panel-sandbox" class="workbench-panel">
+                                <div>
+                                    <h3>Live Catchment Analysis</h3>
+                                    <p class="text-muted" style="font-size: 0.81rem; margin-bottom: 0;">
+                                        Click anywhere on the map to relocate the analysis point and
+                                        recompute Turf.js metrics.
+                                    </p>
+                                </div>
 
-                                <div class="layer-toggle-list">
-                                    <label class="layer-toggle">
-                                        <span class="layer-toggle-left">
-                                            <span class="layer-swatch point" aria-hidden="true"></span>
-                                            <span>Transit Stations (Points)</span>
-                                        </span>
-                                        <input type="checkbox" data-layer-toggle="stations" checked>
-                                    </label>
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <label for="buffer-radius-slider"><strong>Buffer Radius</strong></label>
+                                        <span class="slider-val" id="buffer-radius-val">1.50 km</span>
+                                    </div>
+                                    <input
+                                        type="range"
+                                        id="buffer-radius-slider"
+                                        class="radius-slider"
+                                        min="0.5"
+                                        max="3.0"
+                                        step="0.25"
+                                        value="1.5"
+                                    >
+                                </div>
 
-                                    <label class="layer-toggle">
-                                        <span class="layer-toggle-left">
-                                            <span class="layer-swatch line" aria-hidden="true"></span>
-                                            <span>Priority Corridor (Line)</span>
-                                        </span>
-                                        <input type="checkbox" data-layer-toggle="corridors" checked>
-                                    </label>
+                                <div class="hud-metrics">
+                                    <div class="hud-metric">
+                                        <span class="hud-label">Stations in Catchment</span>
+                                        <span class="hud-value" id="hud-station-count">--</span>
+                                    </div>
+                                    <div class="hud-metric">
+                                        <span class="hud-label">Buffer Area</span>
+                                        <span class="hud-value" id="hud-buffer-area">-- km&sup2;</span>
+                                    </div>
+                                    <div class="hud-metric">
+                                        <span class="hud-label">Density / km&sup2;</span>
+                                        <span class="hud-value" id="hud-density">--</span>
+                                    </div>
+                                    <div class="hud-metric">
+                                        <span class="hud-label">Total Loaded</span>
+                                        <span class="hud-value" id="hud-total-stations">--</span>
+                                    </div>
+                                    <div class="hud-metric full">
+                                        <span class="hud-label">Nearest Station</span>
+                                        <span class="hud-value" id="hud-nearest-dist" style="font-size: 0.92rem;">--</span>
+                                        <span class="hud-sub" id="hud-nearest-name">Calculating...</span>
+                                    </div>
+                                </div>
 
-                                    <label class="layer-toggle">
-                                        <span class="layer-toggle-left">
-                                            <span class="layer-swatch polygon" aria-hidden="true"></span>
-                                            <span>800m Catchments (Polygons)</span>
-                                        </span>
-                                        <input type="checkbox" data-layer-toggle="buffers" checked>
-                                    </label>
+                                <div class="legend-inline">
+                                    <span class="legend-item">
+                                        <span class="legend-dot" style="background: #D97706;"></span>
+                                        Captured
+                                    </span>
+                                    <span class="legend-item">
+                                        <span class="legend-dot" style="background: #64748B;"></span>
+                                        Outside
+                                    </span>
+                                    <span class="legend-item">
+                                        <span class="legend-dot" style="background: #0F766E;"></span>
+                                        Analysis Center
+                                    </span>
                                 </div>
                             </div>
 
-                            <div class="map-meta-box">
-                                <p><strong>Source:</strong> <code>sample-gis-layer.geojson</code></p>
-                                <p><strong>CRS:</strong> <span class="mono">EPSG:4326 (WGS 84)</span></p>
-                                <p><strong>Render:</strong> <span class="mono">Leaflet 1.9.4 Canvas/SVG</span></p>
-                                <p class="text-muted">
-                                    Modularized in <code>js/map-showcase.js</code> for drop-in GeoJSON replacement.
-                                </p>
+                            <!-- Mode B: 3D Project Fly-Through -->
+                            <div id="panel-flythrough" class="workbench-panel" hidden>
+                                <div>
+                                    <h3>3D Project Waypoints</h3>
+                                    <p class="text-muted" style="font-size: 0.81rem; margin-bottom: 0;">
+                                        Select a portfolio site to fly the 3D camera to its study
+                                        extent.
+                                    </p>
+                                </div>
+
+                                <div class="waypoint-list" role="group" aria-label="Project waypoints">
+                                    <button type="button" class="waypoint-chip active" data-waypoint="rvc">
+                                        <span class="waypoint-chip-title">1. Rocky View County</span>
+                                        <span class="waypoint-chip-coords">51.2500&deg; N, 114.0200&deg; W &middot; Municipal GIS</span>
+                                    </button>
+                                    <button type="button" class="waypoint-chip" data-waypoint="transit">
+                                        <span class="waypoint-chip-title">2. Calgary Transit &amp; Winter Risk</span>
+                                        <span class="waypoint-chip-coords">51.0447&deg; N, 114.0719&deg; W &middot; GTFS &amp; LiDAR</span>
+                                    </button>
+                                    <button type="button" class="waypoint-chip" data-waypoint="prairie">
+                                        <span class="waypoint-chip-title">3. Wind Prairie Park (Calgary)</span>
+                                        <span class="waypoint-chip-coords">51.1400&deg; N, 113.9500&deg; W &middot; Field Maps</span>
+                                    </button>
+                                    <button type="button" class="waypoint-chip" data-waypoint="toronto">
+                                        <span class="waypoint-chip-title">4. Toronto &mdash; West Humber-Clairville</span>
+                                        <span class="waypoint-chip-coords">43.7310&deg; N, 79.5960&deg; W &middot; Gi* Hotspot</span>
+                                    </button>
+                                </div>
+
+                                <div class="flythrough-card" id="flythrough-card">
+                                    <span class="eyebrow" id="fly-eyebrow">Municipal GIS Practicum</span>
+                                    <h4 id="fly-title">Rocky View County</h4>
+                                    <p id="fly-summary">
+                                        Planning circulation map sets, custom-radius property queries,
+                                        ArcGIS Enterprise/Field Maps, and Python/FME automation.
+                                    </p>
+                                    <a href="./projects/practicum.html" id="fly-link" class="btn btn-primary btn-small">
+                                        Open Case Study &rarr;
+                                    </a>
+                                </div>
                             </div>
                         </aside>
                     </div>
 
                     <div class="map-statusbar">
                         <span>
-                            CURSOR: <span class="map-coords" id="map-cursor-coords">51.05050&deg; N, 114.06650&deg; W</span>
+                            CURSOR: <span class="map-coords" id="map-cursor-coords">51.04470&deg; N, 114.07190&deg; W</span>
                         </span>
                         <span>
-                            PROJECTION: <span class="mono">EPSG:4326 / Web Mercator (EPSG:3857)</span> &middot;
-                            <span id="map-zoom-level">Z13</span>
+                            VIEW: <span class="mono" id="map-zoom-pitch">Z12.2 / P45&deg;</span>
+                        </span>
+                        <span class="source-badge" id="map-source-badge">
+                            CONNECTING: Calgary Open Data...
                         </span>
                     </div>
                 </div>
@@ -616,10 +698,13 @@
         </div>
     </footer>
 
-    <!-- Leaflet JS -->
+    <!-- MapLibre GL JS + Turf.js -->
     <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"
+        crossorigin=""
+    ></script>
+    <script
+        src="https://unpkg.com/@turf/turf@7/turf.min.js"
         crossorigin=""
     ></script>
     <script src="./js/main.js"></script>
