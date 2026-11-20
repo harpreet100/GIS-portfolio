@@ -790,6 +790,7 @@ section {
 }
 
 .segmented-toggle {
+    position: relative;
     display: inline-flex;
     padding: 0.2rem;
     background: var(--bg-offset);
@@ -799,6 +800,8 @@ section {
 }
 
 .segmented-btn {
+    position: relative;
+    z-index: 1;
     padding: 0.36rem 0.75rem;
     border: 0;
     border-radius: 3px;
@@ -808,7 +811,7 @@ section {
     font-size: 0.74rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition: color 0.2s ease;
 }
 
 .segmented-btn:hover {
@@ -818,6 +821,25 @@ section {
 .segmented-btn.active {
     background: var(--accent-primary);
     color: #FFFFFF;
+}
+
+.segmented-toggle.has-pill .segmented-btn.active {
+    background: transparent;
+}
+
+.sliding-pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent-primary);
+    z-index: 0;
+    pointer-events: none;
+    transition:
+        transform 340ms cubic-bezier(0.22, 1, 0.36, 1),
+        width 340ms cubic-bezier(0.22, 1, 0.36, 1),
+        height 340ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-theme="dark"] .segmented-btn.active {
@@ -1168,12 +1190,15 @@ section {
 }
 
 .filter-container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
 .filter-btn {
+    position: relative;
+    z-index: 1;
     padding: 0.48rem 0.9rem;
     border: 1px solid var(--border-hairline);
     border-radius: var(--radius-sm);
@@ -1182,7 +1207,16 @@ section {
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: border-color 0.15s ease, color 0.2s ease, background-color 0.15s ease;
+}
+
+.filter-container.has-pill .filter-btn {
+    background: transparent;
+}
+
+.filter-container.has-pill .filter-btn.active {
+    background: transparent;
+    border-color: transparent;
 }
 
 .filter-btn:hover {
@@ -1707,23 +1741,204 @@ section {
     .theme-toggle:active {
         transform: scale(0.98);
     }
+
+    /* 1. Self-Drawing Topographic Contours */
+    @keyframes drawContour {
+        from {
+            stroke-dashoffset: 900;
+        }
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .topo-contours path {
+        stroke-dasharray: 900;
+        stroke-dashoffset: 900;
+        animation: drawContour 1.4s var(--ease-out-expo) forwards;
+    }
+
+    .topo-contours path:nth-child(2) { animation-delay: 120ms; }
+    .topo-contours path:nth-child(3) { animation-delay: 240ms; }
+    .topo-contours path:nth-child(4) { animation-delay: 360ms; }
+    .topo-contours path:nth-child(5) { animation-delay: 480ms; }
+
+    /* 2. Cursor-Tracking Border Spotlight & 3D Tilt (Desktop Pointer Only) */
+    .project-card,
+    .matrix-card {
+        position: relative;
+    }
+
+    .project-card::before,
+    .matrix-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 2;
+        background: radial-gradient(
+            360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(15, 118, 110, 0.16),
+            transparent 70%
+        );
+        transition: opacity 250ms ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .project-card:hover::before,
+        .matrix-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover,
+        .matrix-card:hover {
+            transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-3px);
+        }
+    }
+
+    /* Animated SVG Artwork on Card Hover */
+    @keyframes svgFlow {
+        to {
+            stroke-dashoffset: -24;
+        }
+    }
+
+    @keyframes svgPulse {
+        0%, 100% {
+            opacity: 0.7;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+
+    .project-card:hover .svg-flow-line {
+        animation: svgFlow 1.1s linear infinite;
+    }
+
+    .project-card:hover .svg-pulse-ring {
+        animation: svgPulse 1.6s ease-in-out infinite;
+    }
+}
+
+/* ==========================================================================
+   Apple-Style Sticky Scrollytelling (Case Studies)
+   ========================================================================== */
+
+.scrolly-section {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: start;
+    gap: 2.5rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.scrolly-steps {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.scrolly-step {
+    padding: 1.35rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
+    border-left: 3px solid var(--border-hairline);
+    border-radius: var(--radius-sm);
+    transition: border-color 280ms ease, background-color 280ms ease, box-shadow 280ms ease;
+}
+
+.scrolly-step.is-active {
+    border-left-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.scrolly-stage {
+    position: sticky;
+    top: 96px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.scrolly-viewport {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-offset);
+}
+
+.scrolly-visual {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transform: scale(0.98);
+    pointer-events: none;
+    transition:
+        opacity 420ms var(--ease-out-expo),
+        transform 420ms var(--ease-out-expo);
+}
+
+.scrolly-visual.is-active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.scrolly-visual img,
+.scrolly-visual svg {
+    width: 100%;
+    height: calc(100% - 2.4rem);
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.scrolly-caption {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--border-hairline);
+}
+
+@media (max-width: 960px) {
+    .scrolly-section {
+        grid-template-columns: 1fr;
+    }
+
+    .scrolly-stage {
+        position: static;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .hero-animate,
     .hero-animate-delay,
-    [data-reveal] {
+    [data-reveal],
+    .topo-contours path,
+    .svg-flow-line,
+    .svg-pulse-ring {
         animation: none !important;
         transition: none !important;
         opacity: 1 !important;
         transform: none !important;
+        stroke-dashoffset: 0 !important;
     }
 
     .project-card,
+    .matrix-card,
     .project-visual img,
     .project-visual svg.project-svg,
     .site-header,
-    .btn {
+    .btn,
+    .sliding-pill,
+    .scrolly-visual {
         transition: none !important;
     }
 }

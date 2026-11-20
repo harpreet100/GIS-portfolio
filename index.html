@@ -130,9 +130,11 @@
                     </div>
 
                     <div class="coord-strip">
+                        <span>LAT: <strong data-scroll-lat>51.0447&deg; N</strong></span>
+                        <span>&middot;</span>
                         <span>DATUM: <strong>WGS 84 / NAD83</strong></span>
                         <span>&middot;</span>
-                        <span>STACK: <strong>ArcGIS Pro &middot; ArcPy &middot; FME &middot; Leaflet</strong></span>
+                        <span>STACK: <strong>ArcGIS Pro &middot; ArcPy &middot; FME &middot; MapLibre</strong></span>
                     </div>
                 </div>
 
@@ -393,7 +395,7 @@
                                     <rect x="178" y="96" width="96" height="54" fill="var(--bg-surface)"/>
                                 </g>
                                 <rect x="122" y="84" width="44" height="32" fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.5"/>
-                                <circle cx="144" cy="100" r="56" fill="none" stroke="var(--accent-amber)" stroke-width="1.75" stroke-dasharray="5 3"/>
+                                <circle class="svg-pulse-ring" cx="144" cy="100" r="56" fill="none" stroke="var(--accent-amber)" stroke-width="1.75" stroke-dasharray="5 3"/>
                                 <circle cx="144" cy="100" r="3.5" fill="var(--accent-amber)"/>
                                 <rect x="14" y="12" width="128" height="20" rx="3" fill="var(--bg-surface)" stroke="var(--border-hairline)"/>
                                 <text x="22" y="25" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">RVC // PARCEL BUFFER</text>
@@ -438,7 +440,7 @@
                                 <g stroke="var(--border-hairline)" stroke-width="1">
                                     <path d="M0 60H320M0 120H320M106 0V180M213 0V180" opacity="0.55"/>
                                 </g>
-                                <line x1="76" y1="90" x2="244" y2="90" stroke="var(--accent-primary)" stroke-width="2" stroke-dasharray="4 3"/>
+                                <line class="svg-flow-line" x1="76" y1="90" x2="244" y2="90" stroke="var(--accent-primary)" stroke-width="2" stroke-dasharray="4 3"/>
                                 <rect x="18" y="72" width="64" height="36" rx="4" fill="var(--bg-surface)" stroke="var(--border-strong)"/>
                                 <text x="50" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">CSV / SHP</text>
                                 <rect x="96" y="72" width="66" height="36" rx="4" fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.5"/>
@@ -488,8 +490,8 @@
                                 <g stroke="var(--border-hairline)" stroke-width="1" opacity="0.6">
                                     <path d="M0 45H320M0 90H320M0 135H320M80 0V180M160 0V180M240 0V180"/>
                                 </g>
-                                <path d="M36 138L108 106L172 86L238 62L286 38" fill="none" stroke="var(--accent-amber)" stroke-width="3" stroke-linecap="round"/>
-                                <g fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.25">
+                                <path class="svg-flow-line" d="M36 138L108 106L172 86L238 62L286 38" fill="none" stroke="var(--accent-amber)" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/>
+                                <g class="svg-pulse-ring" fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.25">
                                     <circle cx="108" cy="106" r="24"/>
                                     <circle cx="172" cy="86" r="24"/>
                                     <circle cx="238" cy="62" r="24"/>

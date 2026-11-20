@@ -1,12 +1,12 @@
 /**
- * main.js — Core UI behavior for Harpreet Singh's GIS Portfolio
+ * main.js — Core UI & Motion System for Harpreet Singh's GIS Portfolio
  * Handles:
  *  1. Persistent Light/Dark theme toggle (localStorage)
- *  2. Frosted sticky header scroll state (window.scrollY > 24)
+ *  2. Frosted sticky header scroll state + rAF hero topo parallax & coordinate scrubbing
  *  3. Staggered IntersectionObserver scroll reveals ([data-reveal])
- *  4. Accessible mobile navigation drawer
- *  5. Copy-to-clipboard for Prism.js code blocks
- *  6. Dynamic footer copyright year
+ *  4. Desktop pointer-tracking spotlight (--mouse-x, --mouse-y) & damped 3D card tilt
+ *  5. Apple-style sticky scrollytelling observer ([data-scrolly-step])
+ *  6. Accessible mobile navigation, Prism.js copy buttons, and footer year
  */
 
 (function () {
@@ -16,6 +16,9 @@
     const prefersReducedMotion =
         window.matchMedia &&
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isFinePointer =
+        window.matchMedia &&
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     if (!prefersReducedMotion) {
         document.documentElement.classList.add("js-motion");
@@ -40,7 +43,6 @@
         window.dispatchEvent(new CustomEvent("themechange", { detail: { theme } }));
     }
 
-    // Apply saved theme immediately
     applyTheme(getInitialTheme());
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -56,20 +58,47 @@
             });
         }
 
-        // 2. Frosted Sticky Header Scroll State
+        // 2. Frosted Sticky Header + rAF Topo Parallax & Coordinate Scrubbing
         const siteHeader = document.querySelector(".site-header");
-        if (siteHeader) {
-            const syncHeaderScroll = function () {
-                siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
-            };
-            syncHeaderScroll();
-            window.addEventListener("scroll", syncHeaderScroll, { passive: true });
+        const topoSvg = document.querySelector(".topo-contours");
+        const scrollLatEl = document.querySelector("[data-scroll-lat]");
+        const baseLat = 51.0447;
+        let scrollRaf = null;
+
+        function updateOnScroll() {
+            scrollRaf = null;
+            const sy = window.scrollY || window.pageYOffset || 0;
+
+            if (siteHeader) {
+                siteHeader.classList.toggle("is-scrolled", sy > 24);
+            }
+
+            if (!prefersReducedMotion) {
+                if (topoSvg) {
+                    const offset = Math.min(sy * 0.15, 90);
+                    topoSvg.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+                }
+                if (scrollLatEl) {
+                    const scrubbedLat = baseLat + Math.min(sy, 1600) * 0.00004;
+                    scrollLatEl.textContent = `${scrubbedLat.toFixed(4)}° N`;
+                }
+            }
         }
+
+        updateOnScroll();
+        window.addEventListener(
+            "scroll",
+            function () {
+                if (!scrollRaf) {
+                    scrollRaf = requestAnimationFrame(updateOnScroll);
+                }
+            },
+            { passive: true }
+        );
 
         // 3. Staggered Scroll Reveals (IntersectionObserver)
         const revealEls = document.querySelectorAll("[data-reveal]");
         if (revealEls.length > 0) {
-            // Auto-assign stagger indices for sibling reveal items inside grids/lists
             const staggerGroups = document.querySelectorAll(
                 ".grid-2, .grid-3, .grid-4, .matrix-grid, .pipeline-grid, .waypoint-list"
             );
@@ -87,7 +116,7 @@
                     el.classList.add("is-visible");
                 });
             } else {
-                const observer = new IntersectionObserver(
+                const revealObserver = new IntersectionObserver(
                     function (entries, obs) {
                         entries.forEach(function (entry) {
                             if (entry.isIntersecting) {
@@ -103,12 +132,78 @@
                 );
 
                 revealEls.forEach(function (el) {
-                    observer.observe(el);
+                    revealObserver.observe(el);
                 });
             }
         }
 
-        // 4. Mobile Navigation
+        // 4. Cursor-Tracking Border Spotlight & Damped 3D Card Tilt (Desktop Pointer Only)
+        if (!prefersReducedMotion && isFinePointer) {
+            const interactiveCards = document.querySelectorAll(".project-card, .matrix-card");
+            interactiveCards.forEach(function (card) {
+                card.addEventListener("pointermove", function (e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const px = (x / rect.width) * 100;
+                    const py = (y / rect.height) * 100;
+
+                    card.style.setProperty("--mouse-x", `${x.toFixed(1)}px`);
+                    card.style.setProperty("--mouse-y", `${y.toFixed(1)}px`);
+
+                    const tiltY = ((px - 50) / 50) * 2.2;
+                    const tiltX = ((50 - py) / 50) * 2.2;
+                    card.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
+                    card.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
+                });
+
+                card.addEventListener("pointerleave", function () {
+                    card.style.setProperty("--tilt-x", "0deg");
+                    card.style.setProperty("--tilt-y", "0deg");
+                });
+            });
+        }
+
+        // 5. Sticky Scrollytelling Observer (Case Studies)
+        const scrollySteps = document.querySelectorAll("[data-scrolly-step]");
+        const scrollyVisuals = document.querySelectorAll(".scrolly-visual[data-scrolly-index]");
+        if (scrollySteps.length > 0 && scrollyVisuals.length > 0) {
+            function activateScrolly(index) {
+                scrollySteps.forEach(function (step) {
+                    step.classList.toggle("is-active", step.dataset.scrollyStep === index);
+                });
+                scrollyVisuals.forEach(function (vis) {
+                    vis.classList.toggle("is-active", vis.dataset.scrollyIndex === index);
+                });
+            }
+
+            if ("IntersectionObserver" in window) {
+                const scrollyObserver = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                activateScrolly(entry.target.dataset.scrollyStep);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.5,
+                        rootMargin: "-15% 0px -30% 0px"
+                    }
+                );
+                scrollySteps.forEach(function (step) {
+                    scrollyObserver.observe(step);
+                });
+            }
+
+            scrollySteps.forEach(function (step) {
+                step.addEventListener("click", function () {
+                    activateScrolly(step.dataset.scrollyStep);
+                });
+            });
+        }
+
+        // 6. Mobile Navigation
         const menuButton = document.getElementById("mobile-menu");
         const navigation = document.querySelector(".nav-links");
 
@@ -135,7 +230,7 @@
             });
         }
 
-        // 5. Copy Code Buttons (for Prism.js blocks)
+        // 7. Copy Code Buttons (for Prism.js blocks)
         document.querySelectorAll(".copy-code-btn").forEach(function (button) {
             button.addEventListener("click", function () {
                 const block = button.closest(".code-block");
@@ -155,7 +250,7 @@
             });
         });
 
-        // 6. Footer Copyright Year
+        // 8. Footer Copyright Year
         const year = String(new Date().getFullYear());
         document.querySelectorAll("[data-year]").forEach(function (el) {
             el.textContent = year;

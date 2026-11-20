@@ -167,7 +167,11 @@
             return;
         }
 
-        // 1. Initialize MapLibre GL JS Map
+        // 1. Initialize MapLibre GL JS Map (starts flat at pitch: 0, bearing: 0; eases into 3D on scroll)
+        const prefersReducedMotion =
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
         let map;
         try {
             map = new maplibregl.Map({
@@ -175,8 +179,8 @@
                 style: VECTOR_STYLES[activeStyleKey],
                 center: INITIAL_CENTER,
                 zoom: INITIAL_ZOOM,
-                pitch: INITIAL_PITCH,
-                bearing: INITIAL_BEARING,
+                pitch: prefersReducedMotion ? INITIAL_PITCH : 0,
+                bearing: prefersReducedMotion ? INITIAL_BEARING : 0,
                 cooperativeGestures: window.innerWidth < 768,
                 antialias: true
             });
@@ -213,6 +217,20 @@
                     paint: {
                         "line-color": "#0F766E",
                         "line-width": 2.2
+                    }
+                });
+            }
+
+            if (!map.getSource("radar-pulse-source")) {
+                map.addSource("radar-pulse-source", { type: "geojson", data: emptyFC() });
+                map.addLayer({
+                    id: "radar-pulse-layer",
+                    type: "line",
+                    source: "radar-pulse-source",
+                    paint: {
+                        "line-color": "#0F766E",
+                        "line-width": 2.5,
+                        "line-opacity": 0
                     }
                 });
             }
@@ -497,10 +515,65 @@
             return { type: "FeatureCollection", features: pointFeatures };
         }
 
-        // 5. Map Events
+        // 5. Map Events & Cinematic 3D Scroll Entrance
+        let hasPitchedIn = prefersReducedMotion;
+        let radarRafId = null;
+
+        function triggerRadarPulse() {
+            if (prefersReducedMotion || !map.getSource("radar-pulse-source") || !map.getLayer("radar-pulse-layer")) {
+                return;
+            }
+            if (radarRafId) {
+                cancelAnimationFrame(radarRafId);
+                radarRafId = null;
+            }
+            const centerPt = turf.point(analysisCenter);
+            const startTime = performance.now();
+            const duration = 520;
+
+            function step(now) {
+                const t = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                const pulseRadius = bufferRadiusKm * (1 + eased * 0.28);
+                const ring = turf.buffer(centerPt, pulseRadius, { units: "kilometers" });
+                const src = map.getSource("radar-pulse-source");
+                if (src) src.setData({ type: "FeatureCollection", features: [ring] });
+                if (map.getLayer("radar-pulse-layer")) {
+                    map.setPaintProperty("radar-pulse-layer", "line-opacity", Math.max(0, 0.85 * (1 - eased)));
+                }
+                if (t < 1) {
+                    radarRafId = requestAnimationFrame(step);
+                } else {
+                    radarRafId = null;
+                    if (src) src.setData(emptyFC());
+                }
+            }
+            radarRafId = requestAnimationFrame(step);
+        }
+
         map.on("load", function () {
             attachCustomLayers();
             loadStationData();
+
+            if (!hasPitchedIn && "IntersectionObserver" in window) {
+                const mapObserver = new IntersectionObserver(
+                    function (entries, obs) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting && !hasPitchedIn) {
+                                hasPitchedIn = true;
+                                map.easeTo({
+                                    pitch: INITIAL_PITCH,
+                                    bearing: INITIAL_BEARING,
+                                    duration: 1400
+                                });
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.25 }
+                );
+                mapObserver.observe(container);
+            }
         });
 
         map.on("style.load", function () {
@@ -537,6 +610,7 @@
 
             analysisCenter = [e.lngLat.lng, e.lngLat.lat];
             runSpatialAnalysis();
+            triggerRadarPulse();
         });
 
         map.on("mouseenter", "stations-circle", function () {
@@ -574,12 +648,34 @@
                 bufferRadiusKm = parseFloat(radiusSlider.value);
                 radiusVal.textContent = bufferRadiusKm.toFixed(2) + " km";
                 runSpatialAnalysis();
+                triggerRadarPulse();
             });
         }
 
-        // 7. UI Controls: Mode Switcher
+        // 7. UI Controls: Mode Switcher + Sliding Spring Pill
         const panelSandbox = document.getElementById("panel-sandbox");
         const panelFlythrough = document.getElementById("panel-flythrough");
+        const segmentedToggle = document.querySelector(".segmented-toggle");
+        let modePill = null;
+
+        function positionModePill(targetBtn) {
+            if (!modePill || !targetBtn) return;
+            modePill.style.width = `${targetBtn.offsetWidth}px`;
+            modePill.style.height = `${targetBtn.offsetHeight}px`;
+            modePill.style.transform = `translate3d(${targetBtn.offsetLeft}px, ${targetBtn.offsetTop}px, 0)`;
+        }
+
+        if (segmentedToggle) {
+            modePill = document.createElement("span");
+            modePill.className = "sliding-pill";
+            modePill.setAttribute("aria-hidden", "true");
+            segmentedToggle.classList.add("has-pill");
+            segmentedToggle.prepend(modePill);
+            positionModePill(segmentedToggle.querySelector(".segmented-btn.active"));
+            window.addEventListener("resize", function () {
+                positionModePill(segmentedToggle.querySelector(".segmented-btn.active"));
+            });
+        }
 
         document.querySelectorAll("[data-mode]").forEach(function (btn) {
             btn.addEventListener("click", function () {
@@ -591,6 +687,7 @@
                     const isCurrent = b.dataset.mode === activeMode;
                     b.classList.toggle("active", isCurrent);
                     b.setAttribute("aria-pressed", String(isCurrent));
+                    if (isCurrent) positionModePill(b);
                 });
 
                 if (panelSandbox) panelSandbox.hidden = activeMode !== "sandbox";
