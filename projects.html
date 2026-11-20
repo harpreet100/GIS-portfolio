@@ -106,13 +106,10 @@
                         <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">
                             Web-GIS &amp; Dashboards
                         </button>
-                        <button type="button" class="filter-btn" data-filter="remote" aria-pressed="false">
-                            Remote Sensing
-                        </button>
                     </div>
 
                     <span class="filter-status" id="filter-status" aria-live="polite">
-                        Showing 8 of 8 case studies
+                        Showing 7 of 7 case studies
                     </span>
                 </div>
 
@@ -123,11 +120,22 @@
                         data-category="practicum analysis python web"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>MUNICIPAL GIS</span>
-                                <span>ROCKY VIEW COUNTY</span>
-                            </div>
-                            <div class="project-visual-title">PLANNING &amp; AUTOMATION PRACTICUM</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized municipal parcel circulation map with radius buffer">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <g stroke="var(--border-hairline)" stroke-width="1">
+                                    <path d="M0 45H320M0 90H320M0 135H320M80 0V180M160 0V180M240 0V180"/>
+                                    <rect x="42" y="28" width="56" height="44" fill="var(--bg-surface)"/>
+                                    <rect x="104" y="28" width="68" height="44" fill="var(--bg-surface)"/>
+                                    <rect x="178" y="28" width="96" height="62" fill="var(--bg-surface)"/>
+                                    <rect x="42" y="78" width="130" height="72" fill="var(--bg-surface)"/>
+                                    <rect x="178" y="96" width="96" height="54" fill="var(--bg-surface)"/>
+                                </g>
+                                <rect x="122" y="84" width="44" height="32" fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.5"/>
+                                <circle cx="144" cy="100" r="56" fill="none" stroke="var(--accent-amber)" stroke-width="1.75" stroke-dasharray="5 3"/>
+                                <circle cx="144" cy="100" r="3.5" fill="var(--accent-amber)"/>
+                                <rect x="14" y="12" width="128" height="20" rx="3" fill="var(--bg-surface)" stroke="var(--border-hairline)"/>
+                                <text x="22" y="25" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">RVC // PARCEL BUFFER</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">
@@ -165,7 +173,7 @@
                         class="card project-card project-item"
                         data-category="analysis"
                     >
-                        <div class="project-visual" style="padding: 0;">
+                        <div class="project-visual">
                             <img
                                 src="./assets/toronto-auto-theft/toronto-auto-theft-choropleth.png"
                                 alt="Toronto 2024 Auto Theft Choropleth Map"
@@ -209,11 +217,22 @@
                         data-category="python analysis"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>ARCPY PIPELINE</span>
-                                <span>FGDB AUTOMATION</span>
-                            </div>
-                            <div class="project-visual-title">CRIME INCIDENT ANALYSIS WORKFLOW</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ArcPy geoprocessing pipeline diagram">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <g stroke="var(--border-hairline)" stroke-width="1">
+                                    <path d="M0 60H320M0 120H320M106 0V180M213 0V180" opacity="0.55"/>
+                                </g>
+                                <line x1="76" y1="90" x2="244" y2="90" stroke="var(--accent-primary)" stroke-width="2" stroke-dasharray="4 3"/>
+                                <rect x="18" y="72" width="64" height="36" rx="4" fill="var(--bg-surface)" stroke="var(--border-strong)"/>
+                                <text x="50" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">CSV / SHP</text>
+                                <rect x="96" y="72" width="66" height="36" rx="4" fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.5"/>
+                                <text x="129" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--accent-teal-ink)">SpatialJoin</text>
+                                <rect x="176" y="72" width="68" height="36" rx="4" fill="var(--accent-amber-bg)" stroke="var(--accent-amber)" stroke-width="1.5"/>
+                                <text x="210" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--accent-amber-ink)">Stats+Sort</text>
+                                <rect x="256" y="72" width="46" height="36" rx="4" fill="var(--bg-surface)" stroke="var(--accent-primary)" stroke-width="1.5"/>
+                                <text x="279" y="93" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">FGDB</text>
+                                <text x="18" y="28" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-muted)">ARCPY.MANAGEMENT // ETL</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">
@@ -252,33 +271,49 @@
                         data-category="python analysis web"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>TRANSPORTATION</span>
-                                <span>GTFS &middot; CALGARY</span>
-                            </div>
-                            <div class="project-visual-title">CALGARY TRANSIT &amp; REAL-TIME DATA</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Calgary LRT transit corridor with 800m station catchment rings">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <g stroke="var(--border-hairline)" stroke-width="1" opacity="0.6">
+                                    <path d="M0 45H320M0 90H320M0 135H320M80 0V180M160 0V180M240 0V180"/>
+                                </g>
+                                <path d="M36 138L108 106L172 86L238 62L286 38" fill="none" stroke="var(--accent-amber)" stroke-width="3" stroke-linecap="round"/>
+                                <g fill="var(--accent-teal-bg)" stroke="var(--accent-primary)" stroke-width="1.25">
+                                    <circle cx="108" cy="106" r="24"/>
+                                    <circle cx="172" cy="86" r="24"/>
+                                    <circle cx="238" cy="62" r="24"/>
+                                </g>
+                                <g fill="var(--accent-primary)" stroke="var(--bg-surface)" stroke-width="2">
+                                    <circle cx="36" cy="138" r="5"/>
+                                    <circle cx="108" cy="106" r="5.5"/>
+                                    <circle cx="172" cy="86" r="5.5"/>
+                                    <circle cx="238" cy="62" r="5.5"/>
+                                    <circle cx="286" cy="38" r="5"/>
+                                </g>
+                                <rect x="14" y="12" width="144" height="20" rx="3" fill="var(--bg-surface)" stroke="var(--border-hairline)"/>
+                                <text x="22" y="25" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">GTFS // 800M CATCHMENT</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">
                             <span class="project-category">Transportation GIS &middot; Web-GIS</span>
                             <h3>Calgary Transit GIS and Real-Time Data</h3>
                             <p class="project-summary">
-                                Evolving case study connecting static GTFS feeds and real-time transit
-                                concepts with ArcGIS Pro, Python ETL, and interactive Leaflet GeoJSON
-                                mapping.
+                                Case study connecting static GTFS feeds and real-time transit
+                                concepts with ArcGIS Pro, Python ETL, and interactive MapLibre /
+                                Turf.js catchment modeling.
                             </p>
 
                             <div class="pipeline-mini">
                                 <div><span class="pipeline-label">PROBLEM</span><span>Evaluating station walk-sheds from GTFS</span></div>
-                                <div><span class="pipeline-label">PIPELINE</span><span>GTFS TXT &rarr; Python ETL &rarr; GeoJSON / Leaflet</span></div>
-                                <div><span class="pipeline-label">RESULT</span><span>Live 800m catchment web map demo</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>GTFS TXT &rarr; Python ETL &rarr; GeoJSON / MapLibre</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Live 3D catchment &amp; nearest-stop sandbox</span></div>
                             </div>
 
                             <div class="project-tags">
                                 <span class="tag">ArcGIS Pro</span>
                                 <span class="tag">Python</span>
                                 <span class="tag">GTFS</span>
-                                <span class="tag">Leaflet</span>
+                                <span class="tag">MapLibre GL</span>
                             </div>
 
                             <div class="project-actions">
@@ -289,58 +324,28 @@
                         </div>
                     </article>
 
-                    <!-- Remote Sensing -->
-                    <article
-                        class="card project-card project-item"
-                        data-category="analysis remote"
-                    >
-                        <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>IMAGERY</span>
-                                <span>SPECTRAL ANALYSIS</span>
-                            </div>
-                            <div class="project-visual-title">REMOTE SENSING LAND CLASSIFICATION</div>
-                        </div>
-
-                        <div class="project-content">
-                            <span class="project-category">Imagery &middot; Spatial Analysis</span>
-                            <h3>Remote Sensing Analysis</h3>
-                            <p class="project-summary">
-                                Developing case study examining multispectral satellite imagery, spectral
-                                indices, supervised/unsupervised classification, and land-surface change
-                                assessment.
-                            </p>
-
-                            <div class="pipeline-mini">
-                                <div><span class="pipeline-label">PROBLEM</span><span>Land-cover change &amp; spectral separation</span></div>
-                                <div><span class="pipeline-label">PIPELINE</span><span>Band Math &rarr; Classification &rarr; Accuracy</span></div>
-                                <div><span class="pipeline-label">RESULT</span><span>Case study documentation in progress</span></div>
-                            </div>
-
-                            <div class="project-tags">
-                                <span class="tag">Remote Sensing</span>
-                                <span class="tag">Satellite Imagery</span>
-                                <span class="tag">Classification</span>
-                                <span class="tag">ArcGIS Pro</span>
-                            </div>
-
-                            <div class="project-actions">
-                                <span class="btn btn-muted btn-small">Case Study in Progress</span>
-                            </div>
-                        </div>
-                    </article>
-
                     <!-- Community Health Index (CHI) Spatial Database -->
                     <article
                         class="card project-card project-item"
                         data-category="analysis"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>SPATIAL DATABASE</span>
-                                <span>POSTGRESQL &middot; 3NF</span>
-                            </div>
-                            <div class="project-visual-title">COMMUNITY HEALTH INDEX (CHI)</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3NF relational spatial schema diagram">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <path d="M114 86H156V62H196M156 86V118H196" fill="none" stroke="var(--accent-primary)" stroke-width="1.75"/>
+                                <rect x="22" y="54" width="92" height="64" rx="4" fill="var(--bg-surface)" stroke="var(--accent-primary)" stroke-width="1.5"/>
+                                <rect x="22" y="54" width="92" height="18" rx="4" fill="var(--accent-teal-bg)"/>
+                                <text x="30" y="66" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="var(--accent-teal-ink)">NEIGHBOURHOOD</text>
+                                <text x="30" y="84" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--ink-primary)">PK  geom_id</text>
+                                <text x="30" y="98" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--ink-muted)">    polygon_wkb</text>
+                                <rect x="196" y="34" width="102" height="50" rx="4" fill="var(--bg-surface)" stroke="var(--border-strong)"/>
+                                <text x="204" y="50" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="var(--ink-primary)">CHI_METRICS</text>
+                                <text x="204" y="65" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--accent-amber)">FK  geom_id</text>
+                                <rect x="196" y="98" width="102" height="50" rx="4" fill="var(--bg-surface)" stroke="var(--border-strong)"/>
+                                <text x="204" y="114" font-family="JetBrains Mono, monospace" font-size="8" font-weight="600" fill="var(--ink-primary)">CENSUS_3NF</text>
+                                <text x="204" y="129" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--accent-amber)">FK  geom_id</text>
+                                <text x="22" y="26" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-muted)">POSTGRESQL // 3NF SPATIAL DB</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">
@@ -377,11 +382,22 @@
                         data-category="analysis web"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>LIDAR &amp; ARCADE</span>
-                                <span>WINTER MOBILITY</span>
-                            </div>
-                            <div class="project-visual-title">WINTER TRANSIT ACCESSIBILITY &amp; RISK</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LiDAR terrain slope contour profile with high-risk transit stops">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <g fill="none" stroke="var(--border-strong)" stroke-width="1.15" opacity="0.65">
+                                    <path d="M0 140C70 118 110 154 175 126C240 98 270 120 320 105"/>
+                                    <path d="M0 116C75 94 118 130 180 102C242 74 275 96 320 82"/>
+                                    <path d="M0 92C80 70 125 106 185 78C245 50 280 72 320 58"/>
+                                </g>
+                                <path d="M18 144Q96 106 164 114T302 68" fill="none" stroke="var(--accent-primary)" stroke-width="2.5"/>
+                                <g fill="var(--accent-amber)" stroke="var(--bg-surface)" stroke-width="1.75">
+                                    <circle cx="96" cy="116" r="5.5"/>
+                                    <circle cx="212" cy="96" r="5.5"/>
+                                    <circle cx="272" cy="76" r="5.5"/>
+                                </g>
+                                <rect x="14" y="12" width="144" height="20" rx="3" fill="var(--bg-surface)" stroke="var(--border-hairline)"/>
+                                <text x="22" y="25" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">LIDAR SLOPE // ARCADE</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">
@@ -418,11 +434,23 @@
                         data-category="analysis python"
                     >
                         <div class="project-visual">
-                            <div class="project-visual-meta">
-                                <span>NETWORK ANALYST</span>
-                                <span>OFFLINE OSM &middot; LCP</span>
-                            </div>
-                            <div class="project-visual-title">LEAST-COST PATH &amp; OSM ROUTING</div>
+                            <svg class="project-svg" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Weighted cost-surface raster grid with least-cost optimal path">
+                                <rect width="320" height="180" fill="var(--bg-offset)"/>
+                                <g stroke="var(--border-hairline)" stroke-width="1">
+                                    <rect x="64" y="45" width="32" height="30" fill="var(--bg-surface)"/>
+                                    <rect x="96" y="45" width="32" height="30" fill="var(--accent-amber-bg)"/>
+                                    <rect x="128" y="45" width="32" height="30" fill="var(--accent-amber-bg)"/>
+                                    <rect x="160" y="75" width="32" height="30" fill="var(--accent-amber-bg)"/>
+                                    <rect x="192" y="75" width="32" height="30" fill="var(--bg-surface)"/>
+                                    <rect x="224" y="105" width="32" height="30" fill="var(--accent-teal-bg)"/>
+                                    <path d="M0 45H320M0 75H320M0 105H320M0 135H320M64 0V180M96 0V180M128 0V180M160 0V180M192 0V180M224 0V180M256 0V180"/>
+                                </g>
+                                <path d="M38 142C78 134 86 98 118 96C150 94 146 122 186 116C224 110 238 66 282 44" fill="none" stroke="var(--accent-primary)" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="38" cy="142" r="5" fill="var(--accent-primary)" stroke="var(--bg-surface)" stroke-width="1.75"/>
+                                <circle cx="282" cy="44" r="5" fill="var(--accent-amber)" stroke="var(--bg-surface)" stroke-width="1.75"/>
+                                <rect x="14" y="12" width="144" height="20" rx="3" fill="var(--bg-surface)" stroke="var(--border-hairline)"/>
+                                <text x="22" y="25" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="600" fill="var(--ink-primary)">COST SURFACE // OSM LCP</text>
+                            </svg>
                         </div>
 
                         <div class="project-content">

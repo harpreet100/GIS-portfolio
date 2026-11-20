@@ -135,16 +135,61 @@
             return props.route || props.corridor || props.leg || props.status || "Calgary Transit LRT";
         }
 
+        function isWebGLSupported() {
+            try {
+                const canvas = document.createElement("canvas");
+                return !!(
+                    window.WebGLRenderingContext &&
+                    (canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+                );
+            } catch (_e) {
+                return false;
+            }
+        }
+
+        if (!isWebGLSupported()) {
+            container.innerHTML = `
+                <div class="webgl-fallback">
+                    <span class="eyebrow">WebGL Unavailable</span>
+                    <h3>3D Map Renderer Disabled</h3>
+                    <p>
+                        Your browser or corporate environment has WebGL disabled. You can still
+                        explore all GIS case studies, Python/ArcPy pipelines, and cartographic
+                        layouts in the <a href="./projects.html">Projects archive</a>.
+                    </p>
+                </div>
+            `;
+            const badge = document.getElementById("map-source-badge");
+            if (badge) {
+                badge.textContent = "WEBGL UNAVAILABLE";
+                badge.classList.add("fallback");
+            }
+            return;
+        }
+
         // 1. Initialize MapLibre GL JS Map
-        const map = new maplibregl.Map({
-            container: "gis-map",
-            style: VECTOR_STYLES[activeStyleKey],
-            center: INITIAL_CENTER,
-            zoom: INITIAL_ZOOM,
-            pitch: INITIAL_PITCH,
-            bearing: INITIAL_BEARING,
-            antialias: true
-        });
+        let map;
+        try {
+            map = new maplibregl.Map({
+                container: "gis-map",
+                style: VECTOR_STYLES[activeStyleKey],
+                center: INITIAL_CENTER,
+                zoom: INITIAL_ZOOM,
+                pitch: INITIAL_PITCH,
+                bearing: INITIAL_BEARING,
+                cooperativeGestures: window.innerWidth < 768,
+                antialias: true
+            });
+        } catch (_err) {
+            container.innerHTML = `
+                <div class="webgl-fallback">
+                    <span class="eyebrow">Renderer Fallback</span>
+                    <h3>Unable to Initialize 3D Map</h3>
+                    <p>Explore the static case studies and cartographic deliverables in <a href="./projects.html">Projects</a>.</p>
+                </div>
+            `;
+            return;
+        }
 
         map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-left");
 
