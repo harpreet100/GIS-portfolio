@@ -147,8 +147,19 @@ p {
     top: 0;
     z-index: 200;
     height: var(--header-height);
-    background-color: var(--bg-surface);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-hairline);
+    transition:
+        background-color var(--duration-fast) var(--ease-out-expo),
+        border-color var(--duration-fast) var(--ease-out-expo),
+        box-shadow var(--duration-fast) var(--ease-out-expo);
+}
+
+.site-header.is-scrolled {
+    box-shadow: var(--shadow-sm);
+    border-bottom-color: var(--border-strong);
 }
 
 .navbar {
@@ -613,13 +624,19 @@ section {
     flex-direction: column;
     padding: 0;
     overflow: hidden;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    transition:
+        transform 320ms var(--ease-out-expo),
+        box-shadow 320ms var(--ease-out-expo),
+        border-color var(--duration-fast) var(--ease-out-expo);
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow:
+        0 4px 10px rgba(15, 23, 42, 0.05),
+        0 14px 28px rgba(15, 23, 42, 0.09);
+    transform: translateY(-3px);
 }
 
 .project-visual {
@@ -640,6 +657,14 @@ section {
     height: 100%;
     display: block;
     object-fit: cover;
+    transition: transform 420ms var(--ease-out-expo);
+}
+
+.project-card:hover .project-visual img,
+.project-card:hover .project-visual svg.project-svg,
+.project-card:focus-within .project-visual img,
+.project-card:focus-within .project-visual svg.project-svg {
+    transform: scale(1.03);
 }
 
 .webgl-fallback {
@@ -1632,5 +1657,73 @@ section {
     .footer-row {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+/* ==========================================================================
+   Motion & Tactile Micro-Interactions (GPU-Composited, Reduced-Motion Safe)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes heroGlide {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-animate {
+        animation: heroGlide 650ms var(--ease-out-expo) both;
+    }
+
+    .hero-animate-delay {
+        animation: heroGlide 650ms var(--ease-out-expo) 90ms both;
+    }
+
+    /* Progressive enhancement: only hide before reveal when js-motion is active */
+    .js-motion [data-reveal] {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+            opacity var(--duration-base) var(--ease-out-expo),
+            transform var(--duration-base) var(--ease-out-expo);
+        transition-delay: calc(var(--stagger-index, 0) * 60ms);
+    }
+
+    .js-motion [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .btn:active,
+    .filter-btn:active,
+    .map-btn:active,
+    .segmented-btn:active,
+    .waypoint-chip:active,
+    .theme-toggle:active {
+        transform: scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-animate,
+    .hero-animate-delay,
+    [data-reveal] {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .project-card,
+    .project-visual img,
+    .project-visual svg.project-svg,
+    .site-header,
+    .btn {
+        transition: none !important;
     }
 }

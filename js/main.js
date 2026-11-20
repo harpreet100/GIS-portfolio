@@ -2,15 +2,24 @@
  * main.js — Core UI behavior for Harpreet Singh's GIS Portfolio
  * Handles:
  *  1. Persistent Light/Dark theme toggle (localStorage)
- *  2. Accessible mobile navigation drawer
- *  3. Copy-to-clipboard for Prism.js code blocks
- *  4. Dynamic footer copyright year
+ *  2. Frosted sticky header scroll state (window.scrollY > 24)
+ *  3. Staggered IntersectionObserver scroll reveals ([data-reveal])
+ *  4. Accessible mobile navigation drawer
+ *  5. Copy-to-clipboard for Prism.js code blocks
+ *  6. Dynamic footer copyright year
  */
 
 (function () {
     "use strict";
 
     const THEME_KEY = "gis-portfolio-theme";
+    const prefersReducedMotion =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion) {
+        document.documentElement.classList.add("js-motion");
+    }
 
     function getInitialTheme() {
         const stored = localStorage.getItem(THEME_KEY);
@@ -47,7 +56,59 @@
             });
         }
 
-        // 2. Mobile Navigation
+        // 2. Frosted Sticky Header Scroll State
+        const siteHeader = document.querySelector(".site-header");
+        if (siteHeader) {
+            const syncHeaderScroll = function () {
+                siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+            };
+            syncHeaderScroll();
+            window.addEventListener("scroll", syncHeaderScroll, { passive: true });
+        }
+
+        // 3. Staggered Scroll Reveals (IntersectionObserver)
+        const revealEls = document.querySelectorAll("[data-reveal]");
+        if (revealEls.length > 0) {
+            // Auto-assign stagger indices for sibling reveal items inside grids/lists
+            const staggerGroups = document.querySelectorAll(
+                ".grid-2, .grid-3, .grid-4, .matrix-grid, .pipeline-grid, .waypoint-list"
+            );
+            staggerGroups.forEach(function (group) {
+                const children = group.querySelectorAll("[data-reveal]");
+                children.forEach(function (child, idx) {
+                    if (!child.style.getPropertyValue("--stagger-index")) {
+                        child.style.setProperty("--stagger-index", String(idx));
+                    }
+                });
+            });
+
+            if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+                revealEls.forEach(function (el) {
+                    el.classList.add("is-visible");
+                });
+            } else {
+                const observer = new IntersectionObserver(
+                    function (entries, obs) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.12,
+                        rootMargin: "0px 0px -40px 0px"
+                    }
+                );
+
+                revealEls.forEach(function (el) {
+                    observer.observe(el);
+                });
+            }
+        }
+
+        // 4. Mobile Navigation
         const menuButton = document.getElementById("mobile-menu");
         const navigation = document.querySelector(".nav-links");
 
@@ -74,7 +135,7 @@
             });
         }
 
-        // 3. Copy Code Buttons (for Prism.js blocks)
+        // 5. Copy Code Buttons (for Prism.js blocks)
         document.querySelectorAll(".copy-code-btn").forEach(function (button) {
             button.addEventListener("click", function () {
                 const block = button.closest(".code-block");
@@ -94,7 +155,7 @@
             });
         });
 
-        // 4. Footer Copyright Year
+        // 6. Footer Copyright Year
         const year = String(new Date().getFullYear());
         document.querySelectorAll("[data-year]").forEach(function (el) {
             el.textContent = year;

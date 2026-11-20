@@ -55,6 +55,16 @@
     /* Topographic pattern opacity */
     --topo-stroke: rgba(15, 23, 42, 0.06);
     --grid-stroke: rgba(15, 118, 110, 0.08);
+
+    /* Frosted Sticky Header */
+    --header-bg: rgba(255, 255, 255, 0.84);
+
+    /* Motion Tokens */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+    --duration-fast: 220ms;
+    --duration-base: 550ms;
+    --duration-slow: 800ms;
 }
 
 [data-theme="dark"] {
@@ -63,6 +73,7 @@
     --bg-surface: #111827;
     --bg-offset: #172033;
     --bg-elevated: #1E293B;
+    --header-bg: rgba(17, 24, 39, 0.84);
 
     /* Ink / Typography */
     --ink-primary: #F1F5F9;

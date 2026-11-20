@@ -345,6 +345,44 @@
             if (srcFly) srcFly.setData(flythroughTargetGeoJSON);
         }
 
+        function animateMetricValue(el, targetValue, decimals, suffix, duration) {
+            if (!el) return;
+            const dur = typeof duration === "number" ? duration : 260;
+            const sfx = suffix || "";
+            const prefersReduced =
+                window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (el._rafId) {
+                cancelAnimationFrame(el._rafId);
+                el._rafId = null;
+            }
+
+            const startValue = typeof el._numericVal === "number" ? el._numericVal : targetValue;
+            el._numericVal = targetValue;
+
+            if (prefersReduced || Math.abs(targetValue - startValue) < 0.0001) {
+                el.textContent = targetValue.toFixed(decimals) + sfx;
+                return;
+            }
+
+            const startTime = performance.now();
+            function tick(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / dur, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = startValue + (targetValue - startValue) * eased;
+                el.textContent = current.toFixed(decimals) + sfx;
+                if (progress < 1) {
+                    el._rafId = requestAnimationFrame(tick);
+                } else {
+                    el._rafId = null;
+                    el.textContent = targetValue.toFixed(decimals) + sfx;
+                }
+            }
+            el._rafId = requestAnimationFrame(tick);
+        }
+
         // 3. Turf.js Spatial Buffer & Nearest Station Calculation
         function runSpatialAnalysis() {
             const centerPt = turf.point(analysisCenter);
@@ -394,7 +432,7 @@
                     }]
                 };
 
-                document.getElementById("hud-nearest-dist").textContent = distKm.toFixed(2) + " km";
+                animateMetricValue(document.getElementById("hud-nearest-dist"), distKm, 2, " km", 260);
                 document.getElementById("hud-nearest-name").textContent = getStationName(nearest.properties);
             } else {
                 styledStationsGeoJSON = emptyFC();
@@ -404,9 +442,9 @@
             }
 
             const density = areaSqKm > 0 ? capturedCount / areaSqKm : 0;
-            document.getElementById("hud-station-count").textContent = String(capturedCount);
-            document.getElementById("hud-buffer-area").textContent = areaSqKm.toFixed(2) + " km²";
-            document.getElementById("hud-density").textContent = density.toFixed(2);
+            animateMetricValue(document.getElementById("hud-station-count"), capturedCount, 0, "", 260);
+            animateMetricValue(document.getElementById("hud-buffer-area"), areaSqKm, 2, " km²", 260);
+            animateMetricValue(document.getElementById("hud-density"), density, 2, "", 260);
             document.getElementById("hud-total-stations").textContent = String(stationsCollection.features.length);
 
             pushGeoJSONToSources();
