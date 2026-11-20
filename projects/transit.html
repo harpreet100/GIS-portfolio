@@ -1,1 +1,241 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Calgary Transit GIS and Real-Time Data | Harpreet Singh</title><meta name="description" content="An evolving GIS case study using transportation data, ArcGIS, Python, and GTFS concepts."><link rel="stylesheet" href="../css/style.css"></head><body><a class="skip-link" href="#main">Skip to content</a><header><div class="container navbar"><a href="../index.html" class="logo">HARPREET SINGH<span class="logo-tagline">GIS • AUTOMATION • TECHNOLOGY</span></a><button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">☰</button><ul class="nav-links"><li><a href="../index.html">HOME</a></li><li><a href="../projects.html">PROJECTS</a></li><li><a href="../about.html">ABOUT</a></li><li><a href="../index.html#skills">SKILLS</a></li><li><a href="../index.html#contact">CONTACT</a></li></ul></div></header><main id="main"><section class="page-hero"><div class="container"><div class="eyebrow">GIS case study</div><h1>Calgary Transit GIS and Real-Time Data</h1><p>An evolving GIS case study using transportation data, ArcGIS, Python, and GTFS concepts.</p></div></section><section><div class="container prose"><h2>Overview</h2><p>This project explores how transit information can be prepared and examined in a GIS environment using ArcGIS and Python concepts. The case study is designed to connect transportation datasets with spatial analysis and clear map communication.</p><h2>Data and tools</h2><ul><li>ArcGIS Pro</li><li>Python</li><li>Static and real-time transit data concepts</li><li>GTFS data structures</li></ul><h2>Planned evidence</h2><p>Add a map of routes or stops, a screenshot of the processing workflow, and a concise explanation of the question being investigated. Replace this section with measured findings when the analysis is complete.</p><p><a href="../projects.html">← Back to all projects</a></p></div></section></main><footer class="footer"><div class="container footer-row"><span>© <span data-year></span> Harpreet Singh</span><span>GIS • Spatial Analysis • Automation</span></div></footer><script src="../js/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calgary Transit GIS &amp; Real-Time Data | Harpreet Singh</title>
+    <meta
+        name="description"
+        content="Transportation GIS case study modeling Calgary Transit GTFS static feeds, 800m station catchments, and real-time transit concepts using ArcGIS Pro, Python, and Leaflet."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="../index.html" class="logo">
+                HARPREET SINGH
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
+            </a>
+
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../projects.html" class="active">Projects</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../index.html#skills">Capabilities</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="topo-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="eyebrow">Case Study &middot; Transportation GIS</div>
+                <h1>Calgary Transit GIS and Real-Time Data</h1>
+                <p>
+                    Connecting static GTFS schedule feeds and real-time transit concepts to spatial
+                    catchment analysis in ArcGIS Pro, Python, and Leaflet Web-GIS.
+                </p>
+                <div class="project-tags" style="margin-top: 1.25rem;">
+                    <span class="tag">ArcGIS Pro</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">GTFS</span>
+                    <span class="tag">GeoJSON</span>
+                    <span class="tag">Leaflet</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container case-layout prose">
+                <div class="pipeline-grid">
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">01 / Problem</span>
+                        <h3>Tabular GTFS Gap</h3>
+                        <p>
+                            Raw GTFS text tables (<code>stops.txt</code>, <code>trips.txt</code>)
+                            lack immediate spatial catchment context for corridor planning.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">02 / Pipeline</span>
+                        <h3>GTFS &rarr; Spatial</h3>
+                        <p>
+                            Parse stop coordinates in WGS 84, project to NAD83 3TM for 800m metric
+                            buffers, and export GeoJSON.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">03 / Architecture</span>
+                        <h3>Python + Leaflet</h3>
+                        <p>
+                            Python ETL converts tabular feeds into web-ready GeoJSON rendered in an
+                            interactive Leaflet map.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">04 / Result</span>
+                        <h3>Live Web-GIS Demo</h3>
+                        <p>
+                            Interactive Calgary CTrain &amp; 800m pedestrian catchment explorer live
+                            on the portfolio home page.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>1. Operational Problem</h2>
+                <p>
+                    Transit agencies publish schedule and network data in the General Transit Feed
+                    Specification (GTFS) as relational CSV/TXT tables. To evaluate pedestrian
+                    walk-sheds (e.g., 800m / 10-minute station catchments) or corridor service
+                    coverage, those tabular feeds must be joined, projected into a metric coordinate
+                    system, buffered, and exposed in a GIS or Web-GIS interface.
+                </p>
+
+                <h2>2. Data &amp; Spatial Pipeline</h2>
+                <ol>
+                    <li>
+                        <strong>Feed Ingestion:</strong> Read <code>stops.txt</code>,
+                        <code>routes.txt</code>, and <code>stop_times.txt</code> using Python.
+                    </li>
+                    <li>
+                        <strong>Coordinate Projection:</strong> Convert WGS 84
+                        (<code>EPSG:4326</code>) stop coordinates into Calgary's local metric
+                        projection (<code>NAD83 / Alberta 3TM ref merid 114 W</code>) for accurate
+                        800m Euclidean or network-based buffering.
+                    </li>
+                    <li>
+                        <strong>GeoJSON Serialization:</strong> Re-project output polygons and
+                        corridor lines back to <code>EPSG:4326</code> GeoJSON for browser-native
+                        rendering in Leaflet.
+                    </li>
+                </ol>
+
+                <h2>3. Code &amp; Architecture</h2>
+                <p>
+                    Example Python / SQL query pattern used to extract high-frequency stops and
+                    serialize them into a Web-GIS-ready GeoJSON FeatureCollection:
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span>gtfs_to_geojson.py &middot; Python</span>
+                        <button type="button" class="copy-code-btn">Copy Code</button>
+                    </div>
+                    <pre><code class="language-python">import csv
+import json
+
+def stops_to_geojson(stops_txt_path: str, output_geojson_path: str) -> int:
+    features = []
+    with open(stops_txt_path, mode="r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            lat = float(row["stop_lat"])
+            lon = float(row["stop_lon"])
+            features.append({
+                "type": "Feature",
+                "properties": {
+                    "feature_type": "station",
+                    "gtfs_stop_id": row["stop_id"],
+                    "name": row["stop_name"]
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [lon, lat]
+                }
+            })
+
+    collection = {"type": "FeatureCollection", "features": features}
+    with open(output_geojson_path, mode="w", encoding="utf-8") as out:
+        json.dump(collection, out, indent=2)
+    return len(features)</code></pre>
+                </div>
+
+                <h2>4. Measurable Result</h2>
+                <p>
+                    A working prototype of the Calgary Transit Catchment Explorer is deployed
+                    directly on the home page using Leaflet and
+                    <code>./assets/data/sample-gis-layer.geojson</code>, supporting layer toggles,
+                    basemap switching, and attribute inspection.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="../index.html#interactive-map" class="btn btn-primary">
+                        Open Interactive Transit Map &rarr;
+                    </a>
+                    <a href="../projects.html" class="btn btn-secondary">
+                        &larr; Back to All Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row">
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
+        </div>
+    </footer>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

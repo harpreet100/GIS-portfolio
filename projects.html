@@ -3,326 +3,276 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        GIS Projects | Harpreet Singh
-    </title>
-
+    <title>GIS Case Studies &amp; Projects | Harpreet Singh</title>
     <meta
         name="description"
         content="GIS projects by Harpreet Singh featuring municipal GIS, spatial analysis, Python and ArcPy automation, cartography, web GIS, transportation data, and remote sensing."
     >
 
-    <meta
-        property="og:title"
-        content="GIS Projects | Harpreet Singh"
-    >
-
+    <meta property="og:title" content="GIS Projects | Harpreet Singh">
     <meta
         property="og:description"
-        content="Selected GIS projects in municipal GIS, spatial analysis, automation, web GIS, transportation, and remote sensing."
+        content="Selected GIS case studies in municipal GIS, spatial analysis, automation, web GIS, transportation, and remote sensing."
     >
-
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header>
+    <header class="site-header">
         <div class="container navbar">
-
-            <a href="index.html" class="logo">
+            <a href="./index.html" class="logo">
                 HARPREET SINGH
-
-                <span class="logo-tagline">
-                    GIS • AUTOMATION • TECHNOLOGY
-                </span>
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
             </a>
 
-            <button
-                class="menu-toggle"
-                id="mobile-menu"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./projects.html" class="active">Projects</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="./index.html#skills">Capabilities</a></li>
+                        <li><a href="./index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
 
-            <ul class="nav-links">
-                <li>
-                    <a href="index.html">HOME</a>
-                </li>
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
 
-                <li>
-                    <a href="projects.html" class="active">PROJECTS</a>
-                </li>
-
-                <li>
-                    <a href="about.html">ABOUT</a>
-                </li>
-
-                <li>
-                    <a href="index.html#skills">SKILLS</a>
-                </li>
-
-                <li>
-                    <a href="index.html#contact">CONTACT</a>
-                </li>
-            </ul>
-
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
         </div>
     </header>
 
     <main id="main">
-
-        <!-- Page heading -->
         <section class="page-hero">
+            <div class="topo-bg" aria-hidden="true"></div>
             <div class="container">
-
-                <div class="eyebrow">
-                    Selected Work
-                </div>
-
-                <h1>GIS Projects</h1>
-
+                <div class="eyebrow">Case Study Archive</div>
+                <h1>GIS Projects &amp; Spatial Pipelines</h1>
                 <p>
-                    A focused portfolio demonstrating municipal GIS practice,
-                    spatial analysis, automation, transportation data,
-                    cartography, remote sensing, and web GIS.
+                    Each case study documents the operational problem, data and spatial pipeline,
+                    code or architecture, and measurable deliverables across municipal GIS, ArcPy
+                    automation, transportation modeling, and remote sensing.
                 </p>
-
             </div>
         </section>
 
         <section>
             <div class="container">
+                <div class="filter-bar">
+                    <div class="filter-container" role="group" aria-label="Filter projects by category">
+                        <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">
+                            All
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="practicum" aria-pressed="false">
+                            Municipal &amp; Practicum
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="python" aria-pressed="false">
+                            Python &amp; ArcPy
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="analysis" aria-pressed="false">
+                            Spatial Analysis
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">
+                            Web-GIS &amp; Dashboards
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="remote" aria-pressed="false">
+                            Remote Sensing
+                        </button>
+                    </div>
 
-                <div
-                    class="filter-container"
-                    aria-label="Filter projects"
-                >
-
-                    <button
-                        class="filter-btn active"
-                        data-filter="all"
-                    >
-                        All
-                    </button>
-
-                    <button
-                        class="filter-btn"
-                        data-filter="professional"
-                    >
-                        Practicum
-                    </button>
-
-                    <button
-                        class="filter-btn"
-                        data-filter="analysis"
-                    >
-                        Analysis
-                    </button>
-
-                    <button
-                        class="filter-btn"
-                        data-filter="automation"
-                    >
-                        Automation
-                    </button>
-
-                    <button
-                        class="filter-btn"
-                        data-filter="web"
-                    >
-                        Web GIS
-                    </button>
-
-                    <button
-                        class="filter-btn"
-                        data-filter="remote"
-                    >
-                        Remote Sensing
-                    </button>
-
+                    <span class="filter-status" id="filter-status" aria-live="polite">
+                        Showing 7 of 7 case studies
+                    </span>
                 </div>
 
                 <div class="grid-3" id="project-grid">
-
                     <!-- Practicum -->
                     <article
                         class="card project-card project-item"
-                        data-category="professional analysis automation web data"
+                        data-category="practicum analysis python web"
                     >
-
                         <div class="project-visual">
-                            GIS PRACTICUM
+                            <div class="project-visual-meta">
+                                <span>MUNICIPAL GIS</span>
+                                <span>ROCKY VIEW COUNTY</span>
+                            </div>
+                            <div class="project-visual-title">PLANNING &amp; AUTOMATION PRACTICUM</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Municipal GIS • Planning • Automation
-                            </span>
-
-                            <h3>
-                                GIS Practicum at Rocky View County
-                            </h3>
-
-                            <p>
-                                Applied GIS in a municipal environment by
-                                producing planning map sets, running spatial
-                                queries, responding to mapping requests,
-                                supporting web and field applications, and
-                                exploring Python and FME automation.
+                            <span class="project-category">Municipal GIS &middot; Planning &middot; Automation</span>
+                            <h3>GIS Practicum at Rocky View County</h3>
+                            <p class="project-summary">
+                                Applied municipal GIS in a county environment: planning circulation
+                                map sets, spatial queries, custom mapping, web/field apps, and Python/FME
+                                automation.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Cross-department mapping &amp; public inquiries</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>ArcGIS Pro + FME validation + AGOL/ExB</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Production map sets &amp; repeatable ETL</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">ArcGIS Pro</span>
-                                <span class="tag">Cartography</span>
                                 <span class="tag">Experience Builder</span>
                                 <span class="tag">Field Maps</span>
                                 <span class="tag">FME Flow</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/practicum.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Experience
+                                <a href="./projects/practicum.html" class="btn btn-primary btn-small">
+                                    View Case Study
                                 </a>
                             </div>
-
                         </div>
                     </article>
 
-                    <!-- Crime automation -->
+                    <!-- Crime Automation -->
                     <article
                         class="card project-card project-item"
-                        data-category="analysis automation data"
+                        data-category="python analysis"
                     >
-
                         <div class="project-visual">
-                            CRIME ANALYSIS + ARCPY
+                            <div class="project-visual-meta">
+                                <span>ARCPY PIPELINE</span>
+                                <span>FGDB AUTOMATION</span>
+                            </div>
+                            <div class="project-visual-title">CRIME INCIDENT ANALYSIS WORKFLOW</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Spatial Analysis • Python
-                            </span>
-
-                            <h3>
-                                Crime Incident Analysis and ArcPy Automation
-                            </h3>
-
-                            <p>
-                                A repeatable ArcPy workflow for organizing crime
-                                incidents, performing spatial joins, generating
-                                summary tables, sorting results, and cleaning a
-                                file geodatabase.
+                            <span class="project-category">Spatial Analysis &middot; Python &amp; ArcPy</span>
+                            <h3>Crime Incident Analysis and ArcPy Automation</h3>
+                            <p class="project-summary">
+                                Repeatable ArcPy geoprocessing script organizing burglary, assault, and
+                                arson incidents, running spatial joins, summary tables, sorting, and FGDB
+                                cleanup.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Manual multi-layer incident aggregation</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>SpatialJoin &rarr; SummaryStats &rarr; Sort &rarr; Clean</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Clean, verified FGDB summary tables</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">Python</span>
                                 <span class="tag">ArcPy</span>
                                 <span class="tag">Spatial Join</span>
                                 <span class="tag">Summary Statistics</span>
-                                <span class="tag">Geodatabases</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/crime-automation.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Project
+                                <a href="./projects/crime-automation.html" class="btn btn-primary btn-small">
+                                    Inspect Code &amp; Pipeline
                                 </a>
                             </div>
-
                         </div>
                     </article>
 
                     <!-- Transit -->
                     <article
                         class="card project-card project-item"
-                        data-category="analysis automation data"
+                        data-category="python analysis web"
                     >
-
                         <div class="project-visual">
-                            TRANSIT DATA + GIS
+                            <div class="project-visual-meta">
+                                <span>TRANSPORTATION</span>
+                                <span>GTFS &middot; CALGARY</span>
+                            </div>
+                            <div class="project-visual-title">CALGARY TRANSIT &amp; REAL-TIME DATA</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Transportation • Data
-                            </span>
-
-                            <h3>
-                                Calgary Transit GIS and Real-Time Data
-                            </h3>
-
-                            <p>
-                                An evolving GIS case study exploring static and
-                                real-time transit data using ArcGIS, Python, and
-                                GTFS concepts.
+                            <span class="project-category">Transportation GIS &middot; Web-GIS</span>
+                            <h3>Calgary Transit GIS and Real-Time Data</h3>
+                            <p class="project-summary">
+                                Evolving case study connecting static GTFS feeds and real-time transit
+                                concepts with ArcGIS Pro, Python ETL, and interactive Leaflet GeoJSON
+                                mapping.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Evaluating station walk-sheds from GTFS</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>GTFS TXT &rarr; Python ETL &rarr; GeoJSON / Leaflet</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Live 800m catchment web map demo</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">ArcGIS Pro</span>
                                 <span class="tag">Python</span>
                                 <span class="tag">GTFS</span>
-                                <span class="tag">Transportation GIS</span>
+                                <span class="tag">Leaflet</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/transit.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Project
+                                <a href="./projects/transit.html" class="btn btn-primary btn-small">
+                                    View Case Study
                                 </a>
                             </div>
-
                         </div>
                     </article>
 
-                    <!-- Remote sensing -->
+                    <!-- Remote Sensing -->
                     <article
                         class="card project-card project-item"
                         data-category="analysis remote"
                     >
-
                         <div class="project-visual">
-                            REMOTE SENSING
+                            <div class="project-visual-meta">
+                                <span>IMAGERY</span>
+                                <span>SPECTRAL ANALYSIS</span>
+                            </div>
+                            <div class="project-visual-title">REMOTE SENSING LAND CLASSIFICATION</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Imagery • Spatial Analysis
-                            </span>
-
-                            <h3>
-                                Remote Sensing Analysis
-                            </h3>
-
-                            <p>
-                                A developing case study focused on satellite
-                                imagery, spectral behaviour, image
-                                interpretation, classification, and land-surface
-                                analysis.
+                            <span class="project-category">Imagery &middot; Spatial Analysis</span>
+                            <h3>Remote Sensing Analysis</h3>
+                            <p class="project-summary">
+                                Developing case study examining multispectral satellite imagery, spectral
+                                indices, supervised/unsupervised classification, and land-surface change
+                                assessment.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Land-cover change &amp; spectral separation</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>Band Math &rarr; Classification &rarr; Accuracy</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Case study documentation in progress</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">Remote Sensing</span>
@@ -332,51 +282,156 @@
                             </div>
 
                             <div class="project-actions">
-                                <span class="btn btn-muted btn-small">
-                                    Case Study in Progress
-                                </span>
+                                <span class="btn btn-muted btn-small">Case Study in Progress</span>
                             </div>
-
                         </div>
                     </article>
 
+                    <!-- Community Health Index (CHI) Spatial Database -->
+                    <article
+                        class="card project-card project-item"
+                        data-category="analysis"
+                    >
+                        <div class="project-visual">
+                            <div class="project-visual-meta">
+                                <span>SPATIAL DATABASE</span>
+                                <span>POSTGRESQL &middot; 3NF</span>
+                            </div>
+                            <div class="project-visual-title">COMMUNITY HEALTH INDEX (CHI)</div>
+                        </div>
+
+                        <div class="project-content">
+                            <span class="project-category">Spatial Database &middot; PostgreSQL &amp; ArcGIS Pro</span>
+                            <h3>Community Health Index (CHI) Spatial Database</h3>
+                            <p class="project-summary">
+                                Normalized 3NF relational spatial database in PostgreSQL/PostGIS and
+                                ArcGIS Pro integrating socio-economic and health indicators across
+                                municipal boundaries.
+                            </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Fragmented tabular health &amp; census indicators</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>3NF Schema &rarr; PostgreSQL Joins &rarr; ArcGIS Pro</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Normalized spatial DB for composite CHI scoring</span></div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">3NF Design</span>
+                                <span class="tag">ArcGIS Pro</span>
+                                <span class="tag">Spatial SQL</span>
+                            </div>
+
+                            <div class="project-actions">
+                                <span class="btn btn-muted btn-small">Documentation in Progress</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Winter Transit Accessibility & Snow-Clearing Risk -->
+                    <article
+                        class="card project-card project-item"
+                        data-category="analysis web"
+                    >
+                        <div class="project-visual">
+                            <div class="project-visual-meta">
+                                <span>LIDAR &amp; ARCADE</span>
+                                <span>WINTER MOBILITY</span>
+                            </div>
+                            <div class="project-visual-title">WINTER TRANSIT ACCESSIBILITY &amp; RISK</div>
+                        </div>
+
+                        <div class="project-content">
+                            <span class="project-category">Spatial Analysis &middot; LiDAR &amp; Arcade</span>
+                            <h3>Winter Transit Accessibility &amp; Snow-Clearing Risk</h3>
+                            <p class="project-summary">
+                                Evaluating winter pedestrian access to transit stops using LiDAR
+                                elevation/slope derivatives, snow-clearing priority zones, and
+                                dynamic Arcade expressions.
+                            </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Unmapped slope &amp; snow-clearing barriers at stops</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>LiDAR DEM &rarr; Slope/Risk Overlay &rarr; Arcade</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Dynamic risk-scored accessibility layer</span></div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="tag">LiDAR</span>
+                                <span class="tag">Arcade</span>
+                                <span class="tag">ArcGIS Pro</span>
+                                <span class="tag">Accessibility</span>
+                            </div>
+
+                            <div class="project-actions">
+                                <span class="btn btn-muted btn-small">Documentation in Progress</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Multi-Criteria Least-Cost Path & Offline OSM Network Analyst -->
+                    <article
+                        class="card project-card project-item"
+                        data-category="analysis python"
+                    >
+                        <div class="project-visual">
+                            <div class="project-visual-meta">
+                                <span>NETWORK ANALYST</span>
+                                <span>OFFLINE OSM &middot; LCP</span>
+                            </div>
+                            <div class="project-visual-title">LEAST-COST PATH &amp; OSM ROUTING</div>
+                        </div>
+
+                        <div class="project-content">
+                            <span class="project-category">Network &amp; Terrain Modeling &middot; OSM</span>
+                            <h3>Multi-Criteria Least-Cost Path &amp; Offline OSM Network Analyst</h3>
+                            <p class="project-summary">
+                                Combining multi-criteria raster cost surfaces with offline
+                                OpenStreetMap network datasets in ArcGIS Network Analyst for
+                                corridor and emergency routing.
+                            </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Routing across mixed terrain &amp; road networks</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>Weighted Cost Raster + OSM Network Dataset</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Offline-capable optimal corridor alignments</span></div>
+                            </div>
+
+                            <div class="project-tags">
+                                <span class="tag">Network Analyst</span>
+                                <span class="tag">OpenStreetMap</span>
+                                <span class="tag">Least-Cost Path</span>
+                                <span class="tag">Cost Surface</span>
+                            </div>
+
+                            <div class="project-actions">
+                                <span class="btn btn-muted btn-small">Documentation in Progress</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
 
-                <!-- Portfolio note -->
                 <div class="portfolio-note">
-
-                    <h2>Portfolio Development</h2>
-
+                    <h2>Engineering Documentation Standard</h2>
                     <p>
-                        The portfolio focuses on a smaller number of complete,
-                        credible case studies rather than displaying many
-                        unfinished projects. Maps, workflow diagrams, approved
-                        screenshots, measured results, and project evidence will
-                        be added as each case study is finalized.
+                        This portfolio prioritizes complete, verifiable case studies over placeholder
+                        volume. Approved cartographic layouts, workflow diagrams, and benchmarked
+                        outputs are added as each study is finalized.
                     </p>
-
                 </div>
-
             </div>
         </section>
-
     </main>
 
     <footer class="footer">
         <div class="container footer-row">
-
-            <span>
-                © <span data-year></span> Harpreet Singh
-            </span>
-
-            <span>
-                GIS • Spatial Analysis • Automation
-            </span>
-
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/projects-filter.js"></script>
 </body>
 
 </html>

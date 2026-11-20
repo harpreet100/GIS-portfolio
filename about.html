@@ -3,340 +3,343 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        About | Harpreet Singh
-    </title>
-
+    <title>About | Harpreet Singh — GIS &amp; Spatial Automation</title>
     <meta
         name="description"
-        content="Learn about Harpreet Singh's GIS education, computer science background, municipal practicum experience, technical skills, and GIS career direction."
+        content="Harpreet Singh's GIS education (SAIT), Computer Information Systems diploma (KPU), municipal practicum at Rocky View County, and structured GIS capability matrix."
     >
 
-    <meta
-        property="og:title"
-        content="About Harpreet Singh | GIS Portfolio"
-    >
-
+    <meta property="og:title" content="About Harpreet Singh | GIS Portfolio">
     <meta
         property="og:description"
-        content="GIS professional-in-training with a computer science background and municipal GIS practicum experience."
+        content="GIS analyst and automation developer with a Computer Information Systems foundation and municipal GIS practicum experience."
     >
-
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header>
+    <header class="site-header">
         <div class="container navbar">
-
-            <a href="index.html" class="logo">
+            <a href="./index.html" class="logo">
                 HARPREET SINGH
-
-                <span class="logo-tagline">
-                    GIS • AUTOMATION • TECHNOLOGY
-                </span>
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
             </a>
 
-            <button
-                class="menu-toggle"
-                id="mobile-menu"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li><a href="./about.html" class="active">About</a></li>
+                        <li><a href="./index.html#skills">Capabilities</a></li>
+                        <li><a href="./index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
 
-            <ul class="nav-links">
-                <li>
-                    <a href="index.html">HOME</a>
-                </li>
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
 
-                <li>
-                    <a href="projects.html">PROJECTS</a>
-                </li>
-
-                <li>
-                    <a href="about.html" class="active">ABOUT</a>
-                </li>
-
-                <li>
-                    <a href="index.html#skills">SKILLS</a>
-                </li>
-
-                <li>
-                    <a href="index.html#contact">CONTACT</a>
-                </li>
-            </ul>
-
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
         </div>
     </header>
 
     <main id="main">
-
-        <!-- Heading -->
         <section class="page-hero">
+            <div class="topo-bg" aria-hidden="true"></div>
             <div class="container">
-
-                <div class="eyebrow">
-                    About Me
-                </div>
-
-                <h1>
-                    GIS with a Technical Foundation
-                </h1>
-
+                <div class="eyebrow">Profile &amp; Credentials</div>
+                <h1>Spatial Engineering with a CS Foundation</h1>
                 <p>
-                    Combining geographic thinking, municipal GIS experience,
-                    computer science, spatial analysis, cartography, and
-                    automation.
+                    Combining a Bachelor of Geographic Information Systems with a Diploma in Computer
+                    Science and hands-on municipal GIS practicum experience at Rocky View County.
                 </p>
-
             </div>
         </section>
 
-        <!-- Main about content -->
         <section>
             <div class="container about-layout">
-
                 <div class="about-main">
-
-                    <h2>Background</h2>
-
+                    <h2>Education &amp; Technical Foundation</h2>
                     <p>
-                        I am completing a Bachelor of Geographic Information
-                        Systems at the Southern Alberta Institute of Technology.
-                        I also have a diploma in Computer Science from Kwantlen
-                        Polytechnic University.
+                        I am completing a <strong>Bachelor of Applied Technology in Geographic Information Systems (BGIS)</strong> at
+                        the Southern Alberta Institute of Technology (SAIT) &mdash; <em>Practicum Completed; Final 2 Courses Remaining</em> &mdash;
+                        building on a completed <strong>Diploma in Computer Information Systems</strong> from
+                        Kwantlen Polytechnic University (KPU).
+                    </p>
+                    <p>
+                        This dual background bridges cartographic communication and spatial analysis
+                        with software engineering fundamentals&mdash;3NF relational database design,
+                        PostgreSQL/PostGIS, Python/ArcPy scripting, and repeatable FME ETL automation.
                     </p>
 
-                    <p>
-                        This combination allows me to approach GIS work through
-                        spatial analysis and cartographic communication while
-                        also understanding programming, databases, structured
-                        problem-solving, data processing, and workflow
-                        automation.
-                    </p>
-
-                    <h2>GIS Practicum Experience</h2>
-
-                    <p>
-                        I completed a GIS practicum at Rocky View County, where I
-                        worked alongside experienced GIS professionals in a
-                        municipal and county environment.
-                    </p>
-
-                    <p>
-                        My practicum experience included planning map sets,
-                        spatial and attribute queries, custom-radius property
-                        information, custom map production, public GIS
-                        inquiries, ArcGIS web and field applications, Python
-                        automation, FME workflows, and collaboration with
-                        different County departments.
-                    </p>
-
-                    <p>
-                        The experience taught me how GIS supports planning,
-                        operations, public service, cross-department
-                        collaboration, and evidence-based decision-making.
-                    </p>
+                    <h2>Experience Timeline</h2>
+                    <div class="pipeline-grid" style="grid-template-columns: 1fr; gap: 1rem; margin: 1.25rem 0 2rem;">
+                        <div class="pipeline-step">
+                            <span class="pipeline-step-num">Mar 2026 &ndash; Present &middot; Contract Full-Time</span>
+                            <h3>GIS Student | Rocky View County</h3>
+                            <p>
+                                Automated Data Governance &amp; Geodatabase Modernization, Python/ArcPy &amp;
+                                FME/FME Flow ETL pipelines, CAD-to-GIS integration, ArcGIS Enterprise
+                                Portal / Experience Builder / Field Maps / Survey123, and municipal
+                                circulation map sets.
+                            </p>
+                        </div>
+                        <div class="pipeline-step">
+                            <span class="pipeline-step-num">Nov 2019 &ndash; Present &middot; 6+ Years</span>
+                            <h3>Transit Operator | Calgary Transit &amp; TransLink</h3>
+                            <p>
+                                6+ years of municipal transit network operations, route run-time
+                                analysis, corridor reliability observation, and safety compliance.
+                            </p>
+                        </div>
+                        <div class="pipeline-step">
+                            <span class="pipeline-step-num">May 2017 &ndash; Oct 2019</span>
+                            <h3>Telecom Field Technician | TELUS (Ledcor Technical Services)</h3>
+                            <p>
+                                Engineering CAD schematic interpretation, utility site plans, and
+                                fiber/copper network diagnostics.
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="callout">
-                        Internal County information, restricted property data,
-                        private workflows, and confidential organizational
-                        deliverables are not published in this portfolio.
+                        <strong>Confidentiality Notice:</strong> Internal County datasets, restricted
+                        property ownership records, private FME/Python scripts, and internal URLs
+                        are excluded from this public portfolio.
                     </div>
 
-                    <h2>Professional Approach</h2>
-
+                    <h2>Engineering Approach</h2>
                     <p>
-                        I learned that successful GIS work requires more than
-                        knowing how to use GIS software. Professional GIS also
-                        depends on accurate data, clear requirements, organized
-                        workflows, appropriate documentation, quality control,
-                        communication, and understanding the purpose of the final
-                        product.
+                        Effective GIS delivery starts by defining the operational question, verifying
+                        coordinate reference systems and attribute integrity, and selecting the
+                        right output—whether a print-ready map layout, a scheduled FME/ArcPy
+                        pipeline, or a focused Web-GIS application.
                     </p>
 
+                    <h2>Target Roles</h2>
                     <p>
-                        When responding to a GIS request, I try to understand the
-                        operational question first. I then identify the relevant
-                        data, determine the appropriate GIS method, and select a
-                        map, analysis, dataset, or application format that meets
-                        the user's needs.
+                        Pursuing <strong>GIS Analyst</strong>, <strong>GIS Technician</strong>, and
+                        <strong>Junior GIS Developer</strong> roles in municipal government,
+                        transportation, utilities, environmental consulting, and urban planning.
                     </p>
-
-                    <h2>Career Direction</h2>
-
-                    <p>
-                        I am pursuing GIS analyst opportunities with a long-term
-                        interest in GIS development and automation. I am
-                        especially interested in municipal, government,
-                        environmental, transportation, planning, and utility
-                        organizations.
-                    </p>
-
-                    <p>
-                        My goal is to continue developing skills in spatial
-                        analysis, data management, Python and ArcPy automation,
-                        FME, web GIS, cartography, and geospatial application
-                        development.
-                    </p>
-
                 </div>
 
-                <!-- Sidebar -->
-                <aside class="about-sidebar">
-
+                <aside class="about-sidebar" aria-label="Credentials and contact links">
                     <div class="card">
                         <h3>Education</h3>
-
                         <p>
-                            <strong>
-                                Bachelor of Geographic Information Systems
-                            </strong>
+                            <strong>Bachelor of Applied Technology in Geographic Information Systems (BGIS)</strong><br>
+                            <span class="text-muted">SAIT &middot; Practicum Completed; Final 2 Courses Remaining</span>
                         </p>
-
-                        <p class="text-light">
-                            Southern Alberta Institute of Technology
-                        </p>
-
                         <p>
-                            <strong>
-                                Diploma in Computer Science
-                            </strong>
-                        </p>
-
-                        <p class="text-light">
-                            Kwantlen Polytechnic University
+                            <strong>Diploma in Computer Information Systems</strong><br>
+                            <span class="text-muted">Kwantlen Polytechnic University (KPU) &middot; Completed</span>
                         </p>
                     </div>
 
                     <div class="card">
-                        <h3>Professional Experience</h3>
-
+                        <h3>Municipal Experience</h3>
                         <p>
-                            <strong>
-                                GIS Practicum
-                            </strong>
+                            <strong>GIS Student (Contract Full-Time)</strong><br>
+                            <span class="text-muted">Rocky View County, AB &middot; Mar 2026 &ndash; Present</span>
                         </p>
+                        <a href="./projects/practicum.html" class="text-link">
+                            Read practicum case study &rarr;
+                        </a>
+                    </div>
 
-                        <p class="text-light">
-                            Rocky View County
+                    <div class="card">
+                        <h3>Direct Contact &amp; Links</h3>
+                        <p class="text-muted" style="font-size: 0.84rem; margin-bottom: 0.5rem;">
+                            Location: <strong>Calgary, AB</strong>
                         </p>
-
-                        <a
-                             href="projects/practicum.html"
-                             class="text-link"
+                        <div class="hero-actions" style="margin-top: 0.5rem; flex-direction: column;">
+                            <a href="mailto:harpreet.spurewal@gmail.com" class="btn btn-primary btn-small">
+                                Email: harpreet.spurewal@gmail.com
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/harpreet-singh-894583255/"
+                                class="btn btn-secondary btn-small"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                         View practicum case study
-</a>
+                                LinkedIn Profile
+                            </a>
+                            <a
+                                href="https://github.com/harpreet100"
+                                class="btn btn-secondary btn-small"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                GitHub (@harpreet100)
+                            </a>
+                            <!-- PLACEHOLDER: Drop your resume PDF at ./assets/Harpreet_Singh_GIS_Resume.pdf (or update this href to match your filename) -->
+                            <a
+                                href="./assets/Harpreet_Singh_GIS_Resume.pdf"
+                                class="btn btn-amber btn-small"
+                                title="Download Resume (PDF)"
+                            >
+                                Download Resume (PDF)
+                            </a>
+                        </div>
                     </div>
-
-                    <div class="card">
-                        <h3>Primary Interests</h3>
-
-                        <ul class="skill-list">
-                            <li>Municipal GIS</li>
-                            <li>Spatial analysis</li>
-                            <li>GIS automation</li>
-                            <li>Cartography</li>
-                            <li>Web GIS</li>
-                            <li>FME workflows</li>
-                            <li>Data management</li>
-                        </ul>
-                    </div>
-
                 </aside>
-
             </div>
         </section>
 
-        <!-- Career strengths -->
+        <!-- Scannable Capability Matrix -->
         <section class="bg-offset">
             <div class="container">
+                <div class="eyebrow">Capability Matrix</div>
+                <h2>Technical Capabilities by Domain</h2>
+                <p class="section-intro">
+                    Concrete tools, standards, and workflows used across academic, practicum, and
+                    personal projects.
+                </p>
 
-                <h2>What I Bring to GIS Work</h2>
-
-                <div class="grid-3">
-
-                    <div class="card">
-                        <h3>Spatial Thinking</h3>
-
-                        <p>
-                            Understanding geographic relationships, selecting
-                            appropriate methods, and communicating spatial
-                            information through clear maps and analysis.
-                        </p>
+                <div class="matrix-grid">
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>GIS &amp; Cartography</h3>
+                            <span class="matrix-code">01 // SPATIAL</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">ArcGIS Pro</span>
+                                <span class="matrix-detail">Layouts &middot; Map Series &middot; Symbology</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Spatial Queries &amp; Overlay</span>
+                                <span class="matrix-detail">Buffers &middot; Spatial Joins &middot; Clip</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">CRS &amp; Projections</span>
+                                <span class="matrix-detail">NAD83 3TM &middot; UTM &middot; WGS 84</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Remote Sensing</span>
+                                <span class="matrix-detail">Classification &middot; Spectral Indices</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card">
-                        <h3>Technical Problem-Solving</h3>
-
-                        <p>
-                            Using programming, automation, troubleshooting, and
-                            structured workflows to improve GIS processes.
-                        </p>
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Scripting &amp; Automation</h3>
+                            <span class="matrix-code">02 // AUTOMATION</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Python &amp; ArcPy</span>
+                                <span class="matrix-detail">Geoprocessing &middot; Batch Cleanup</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">FME &amp; FME Flow</span>
+                                <span class="matrix-detail">Workspaces &middot; Scheduled Jobs</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">QA / QC Validation</span>
+                                <span class="matrix-detail">Schema Checks &middot; Error Handling</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Developer Tooling</span>
+                                <span class="matrix-detail">Git &middot; GitHub &middot; VS Code</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card">
-                        <h3>Professional Communication</h3>
-
-                        <p>
-                            Gathering requirements, working with different
-                            departments, and presenting GIS information to
-                            technical and non-technical users.
-                        </p>
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Databases &amp; ETL</h3>
+                            <span class="matrix-code">03 // DATA</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">PostgreSQL / PostGIS</span>
+                                <span class="matrix-detail">Spatial SQL &middot; Spatial Indexing</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">3NF Relational Database Design</span>
+                                <span class="matrix-detail">Normalization &middot; FGDB Schemas</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">CAD-to-GIS Integration</span>
+                                <span class="matrix-detail">DWG/DXF &rarr; Enterprise FGDB</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Transit &amp; Open Formats</span>
+                                <span class="matrix-detail">GTFS &middot; GeoJSON &middot; CSV</span>
+                            </div>
+                        </div>
                     </div>
 
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Web-GIS &amp; Development</h3>
+                            <span class="matrix-code">04 // WEB</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">ArcGIS Enterprise Portal</span>
+                                <span class="matrix-detail">AGOL &middot; Experience Builder</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Field &amp; Expression Tooling</span>
+                                <span class="matrix-detail">Field Maps &middot; Survey123 &middot; Arcade</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Leaflet &amp; Web APIs</span>
+                                <span class="matrix-detail">Custom Popups &middot; Basemaps</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Frontend Core</span>
+                                <span class="matrix-detail">HTML5 &middot; CSS3 &middot; Vanilla JS</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="hero-actions">
-                    <a
-                        href="projects.html"
-                        class="btn btn-primary"
-                    >
-                        View Projects
-                    </a>
-
-                    <a
-                        href="index.html#contact"
-                        class="btn btn-dark"
-                    >
-                        Contact Me
-                    </a>
-                </div>
-
             </div>
         </section>
-
     </main>
 
     <footer class="footer">
         <div class="container footer-row">
-
-            <span>
-                © <span data-year></span> Harpreet Singh
-            </span>
-
-            <span>
-                GIS • Spatial Analysis • Automation
-            </span>
-
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

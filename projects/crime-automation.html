@@ -1,1 +1,274 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crime Incident Analysis and ArcPy Automation | Harpreet Singh</title><meta name="description" content="A repeatable geoprocessing workflow for incident analysis, spatial joins, summary tables, sorting, and geodatabase cleanup."><link rel="stylesheet" href="../css/style.css"></head><body><a class="skip-link" href="#main">Skip to content</a><header><div class="container navbar"><a href="../index.html" class="logo">HARPREET SINGH<span class="logo-tagline">GIS • AUTOMATION • TECHNOLOGY</span></a><button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">☰</button><ul class="nav-links"><li><a href="../index.html">HOME</a></li><li><a href="../projects.html">PROJECTS</a></li><li><a href="../about.html">ABOUT</a></li><li><a href="../index.html#skills">SKILLS</a></li><li><a href="../index.html#contact">CONTACT</a></li></ul></div></header><main id="main"><section class="page-hero"><div class="container"><div class="eyebrow">GIS case study</div><h1>Crime Incident Analysis and ArcPy Automation</h1><p>A repeatable geoprocessing workflow for incident analysis, spatial joins, summary tables, sorting, and geodatabase cleanup.</p></div></section><section><div class="container prose"><h2>Objective</h2><p>Build a repeatable ArcPy workflow for organizing and summarizing multiple crime incident datasets within a file geodatabase.</p><h2>Workflow</h2><ol><li>Prepare burglary, assault, and arson feature classes.</li><li>Use spatial joins to connect incidents with precincts or nearby landmarks.</li><li>Create summary tables and sort counts in descending order.</li><li>Remove unnecessary fields and clean intermediate geodatabase outputs.</li><li>List the final feature classes and tables to verify the deliverables.</li></ol><h2>Skills demonstrated</h2><p>ArcPy, geoprocessing automation, spatial joins, summary statistics, table sorting, field management, file geodatabases, and workflow validation.</p><h2>Portfolio evidence to add</h2><p>Add a workflow diagram, one final map, a short code excerpt, and a table showing the final summarized output. Include only results produced from the completed analysis.</p><p><a href="../projects.html">← Back to all projects</a></p></div></section></main><footer class="footer"><div class="container footer-row"><span>© <span data-year></span> Harpreet Singh</span><span>GIS • Spatial Analysis • Automation</span></div></footer><script src="../js/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Crime Incident Analysis &amp; ArcPy Automation | Harpreet Singh</title>
+    <meta
+        name="description"
+        content="Repeatable ArcPy geoprocessing workflow for crime incident spatial joins, summary statistics, descending ranking, and file geodatabase cleanup."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Prism.js Syntax Highlighting -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    >
+
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container navbar">
+            <a href="../index.html" class="logo">
+                HARPREET SINGH
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
+            </a>
+
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../projects.html" class="active">Projects</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../index.html#skills">Capabilities</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="topo-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="eyebrow">Case Study &middot; Python &amp; ArcPy</div>
+                <h1>Crime Incident Analysis and ArcPy Automation</h1>
+                <p>
+                    Repeatable geoprocessing pipeline for incident spatial joins, precinct
+                    aggregation, descending ranking, schema hygiene, and automated file geodatabase
+                    cleanup.
+                </p>
+                <div class="project-tags" style="margin-top: 1.25rem;">
+                    <span class="tag">Python 3</span>
+                    <span class="tag">ArcPy</span>
+                    <span class="tag">SpatialJoin</span>
+                    <span class="tag">Summary Statistics</span>
+                    <span class="tag">File Geodatabase</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container case-layout prose">
+                <!-- 4-Stage Pipeline Summary -->
+                <div class="pipeline-grid">
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">01 / Problem</span>
+                        <h3>Manual Aggregation</h3>
+                        <p>
+                            Multi-category incident layers (burglary, assault, arson) required
+                            repetitive manual joins and schema cleanup.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">02 / Pipeline</span>
+                        <h3>Spatial &amp; Tabular</h3>
+                        <p>
+                            Standardize FGDB workspace, join incidents to precincts/landmarks, and
+                            compute summary counts.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">03 / Architecture</span>
+                        <h3>ArcPy Script</h3>
+                        <p>
+                            Idempotent Python pipeline with <code>overwriteOutput</code>, field
+                            pruning, and intermediate cleanup.
+                        </p>
+                    </div>
+                    <div class="pipeline-step">
+                        <span class="pipeline-step-num">04 / Result</span>
+                        <h3>Verified FGDB</h3>
+                        <p>
+                            Sorted summary tables and clean deliverable feature classes ready for
+                            mapping or BI reporting.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>1. Operational Problem</h2>
+                <p>
+                    Analyzing multi-category crime incident datasets (burglary, assault, and arson)
+                    in ArcGIS Pro by hand requires running identical geoprocessing tools across
+                    multiple feature classes, manually deleting intermediate join artifacts, and
+                    re-sorting summary tables whenever source records update. Any missed step
+                    introduces schema inconsistencies into the project file geodatabase (FGDB).
+                </p>
+
+                <h2>2. Data &amp; Spatial Pipeline</h2>
+                <ol>
+                    <li>
+                        <strong>Workspace Configuration:</strong> Set <code>arcpy.env.workspace</code>
+                        to the target FGDB and enable <code>overwriteOutput = True</code> for
+                        repeatable execution.
+                    </li>
+                    <li>
+                        <strong>Spatial Join Execution:</strong> Join point incident layers
+                        (burglary, assault, arson) against precinct polygons or landmark proximity
+                        zones using <code>arcpy.analysis.SpatialJoin</code>.
+                    </li>
+                    <li>
+                        <strong>Aggregation &amp; Ranking:</strong> Run
+                        <code>arcpy.analysis.Statistics</code> to aggregate incident counts by
+                        precinct, then sort descending with <code>arcpy.management.Sort</code>.
+                    </li>
+                    <li>
+                        <strong>Schema Hygiene &amp; Cleanup:</strong> Drop redundant join fields
+                        via <code>DeleteField</code>, remove intermediate feature classes, and
+                        enumerate final FGDB contents for verification.
+                    </li>
+                </ol>
+
+                <h2>3. Code &amp; Architecture</h2>
+                <p>
+                    Representative ArcPy pipeline pattern demonstrating batch spatial joins,
+                    summary statistics, descending sort, and geodatabase cleanup:
+                </p>
+
+                <div class="code-block">
+                    <div class="code-block-header">
+                        <span>crime_pipeline.py &middot; Python / ArcPy</span>
+                        <button type="button" class="copy-code-btn">Copy Code</button>
+                    </div>
+                    <pre><code class="language-python">import arcpy
+
+arcpy.env.workspace = r"C:\GIS\Projects\CrimeAnalysis.gdb"
+arcpy.env.overwriteOutput = True
+
+precincts = "Police_Precincts"
+incident_layers = ["Burglary_Incidents", "Assault_Incidents", "Arson_Incidents"]
+intermediate_outputs = []
+
+for layer in incident_layers:
+    join_fc = f"{layer}_PrecinctJoin"
+    stats_tbl = f"{layer}_Summary"
+    sorted_tbl = f"{layer}_Ranked"
+
+    # 1. Spatial join incidents to precinct boundaries
+    arcpy.analysis.SpatialJoin(
+        target_features=layer,
+        join_features=precincts,
+        out_feature_class=join_fc,
+        join_operation="JOIN_ONE_TO_ONE",
+        match_option="WITHIN"
+    )
+    intermediate_outputs.append(join_fc)
+
+    # 2. Summarize incident counts per precinct
+    arcpy.analysis.Statistics(
+        in_table=join_fc,
+        out_table=stats_tbl,
+        statistics_fields=[["OBJECTID", "COUNT"]],
+        case_field=["PRECINCT_ID"]
+    )
+    intermediate_outputs.append(stats_tbl)
+
+    # 3. Sort descending by incident count
+    arcpy.management.Sort(
+        in_dataset=stats_tbl,
+        out_dataset=sorted_tbl,
+        sort_field=[["FREQUENCY", "DESCENDING"]]
+    )
+
+# 4. Remove intermediate datasets to keep FGDB clean
+for temp_ds in intermediate_outputs:
+    if arcpy.Exists(temp_ds):
+        arcpy.management.Delete(temp_ds)
+
+print("Deliverable tables:", arcpy.ListTables("*_Ranked"))</code></pre>
+                </div>
+
+                <h2>4. Measurable Result</h2>
+                <ul>
+                    <li>
+                        Replaced multi-step manual geoprocessing with a single repeatable Python
+                        execution across all three incident categories.
+                    </li>
+                    <li>
+                        Eliminated stray intermediate join feature classes from the production file
+                        geodatabase via automated post-processing cleanup.
+                    </li>
+                    <li>
+                        Standardized descending-ranked summary tables for consistent cartographic
+                        symbology and reporting.
+                    </li>
+                </ul>
+
+                <div class="hero-actions">
+                    <a href="../projects.html" class="btn btn-primary">&larr; Back to All Projects</a>
+                    <a href="../index.html#interactive-map" class="btn btn-secondary">
+                        View Interactive Web-GIS Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-row">
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
+        </div>
+    </footer>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

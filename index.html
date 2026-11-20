@@ -3,492 +3,570 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Harpreet Singh | GIS, Spatial Analysis and Automation
-    </title>
-
+    <title>Harpreet Singh | GIS Analyst &amp; Spatial Automation Engineer</title>
     <meta
         name="description"
-        content="Harpreet Singh's GIS portfolio featuring municipal GIS experience, spatial analysis, ArcPy automation, cartography, web GIS, FME, and geospatial projects."
+        content="Web-GIS and spatial engineering portfolio of Harpreet Singh: municipal GIS at Rocky View County, Python/ArcPy automation, FME workflows, GTFS transit analysis, and interactive Leaflet mapping."
     >
 
-    <meta
-        property="og:title"
-        content="Harpreet Singh | GIS Portfolio"
-    >
-
+    <meta property="og:title" content="Harpreet Singh | GIS &amp; Spatial Automation Portfolio">
     <meta
         property="og:description"
-        content="GIS portfolio featuring municipal GIS experience, spatial analysis, cartography, web GIS, Python, ArcPy, and FME automation."
+        content="Municipal GIS, ArcPy and FME automation, spatial data modeling, and interactive Web-GIS applications."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harpreet100.github.io/GIS-portfolio/">
+
+    <!-- Fonts: Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
     >
 
-    <meta
-        property="og:type"
-        content="website"
+    <!-- Leaflet Web-GIS Library -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
     >
 
-    <meta
-        property="og:url"
-        content="https://harpreet100.github.io/GIS-portfolio/"
-    >
-
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Design System & Styles -->
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Navigation -->
-    <header>
+    <header class="site-header">
         <div class="container navbar">
-
-            <a href="index.html" class="logo">
+            <a href="./index.html" class="logo">
                 HARPREET SINGH
-
-                <span class="logo-tagline">
-                    GIS • AUTOMATION • TECHNOLOGY
-                </span>
+                <span class="logo-tagline">GIS &middot; SPATIAL AUTOMATION &middot; WEB-GIS</span>
             </a>
 
-            <button
-                class="menu-toggle"
-                id="mobile-menu"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-            >
-                ☰
-            </button>
+            <div class="nav-controls">
+                <nav aria-label="Primary navigation">
+                    <ul class="nav-links">
+                        <li><a href="./index.html" class="active">Home</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li><a href="./about.html">About</a></li>
+                        <li><a href="#skills">Capabilities</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
 
-            <ul class="nav-links">
-                <li>
-                    <a href="index.html" class="active">HOME</a>
-                </li>
+                <button
+                    type="button"
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                >
+                    &#9790; Dark
+                </button>
 
-                <li>
-                    <a href="projects.html">PROJECTS</a>
-                </li>
-
-                <li>
-                    <a href="about.html">ABOUT</a>
-                </li>
-
-                <li>
-                    <a href="#skills">SKILLS</a>
-                </li>
-
-                <li>
-                    <a href="#contact">CONTACT</a>
-                </li>
-            </ul>
-
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                >
+                    &#9776;
+                </button>
+            </div>
         </div>
     </header>
 
     <main id="main">
-
         <!-- Hero -->
         <section class="hero">
+            <div class="topo-bg" aria-hidden="true"></div>
+            <svg
+                class="topo-contours"
+                viewBox="0 0 600 420"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+            >
+                <path d="M520 30C420 55 370 120 400 185C430 250 360 320 260 340C160 360 90 390 40 415" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M560 65C455 90 405 145 430 205C455 265 385 335 285 355C195 373 125 398 85 420" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M590 110C490 130 445 175 465 230C485 285 415 350 320 370C240 387 175 405 140 420" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M475 10C375 35 320 95 345 160C370 225 305 295 205 315C110 334 45 365 5 390" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M420 -10C325 18 265 72 285 135C305 198 245 265 145 285C65 301 15 328 -10 350" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+
             <div class="container hero-grid">
-
                 <div>
-                    <div class="eyebrow">
-                        GIS Portfolio
-                    </div>
-
+                    <div class="eyebrow">Calgary, AB &middot; EPSG:4326 / NAD83 3TM</div>
                     <h1>Harpreet Singh</h1>
-
                     <p class="hero-subtitle">
-                        Spatial Analysis • GIS Automation • Cartography
+                        GIS Analyst &amp; Spatial Automation Developer
                     </p>
-
                     <p class="hero-desc">
-                        GIS professional-in-training combining municipal GIS
-                        experience, spatial analysis, ArcGIS, Python, FME, web
-                        GIS, and automation to turn geographic data into useful
-                        and clearly communicated solutions.
+                        Combining a Bachelor of Applied Technology in Geographic Information Systems
+                        (SAIT — Practicum Completed; Final 2 Courses Remaining) and a Diploma in
+                        Computer Information Systems (KPU — Completed) with municipal GIS experience
+                        at Rocky View County. Focused on Python/ArcPy automation, FME ETL
+                        pipelines, PostgreSQL/PostGIS, and Web-GIS applications.
                     </p>
 
                     <div class="hero-actions">
-                        <a
-                            href="projects.html"
-                            class="btn btn-primary"
-                        >
-                            View Projects
-                        </a>
-
-                        <a
-                            href="projects/practicum.html"
-                            class="btn btn-secondary"
-                        >
-                            View Practicum
-                        </a>
-
+                        <a href="./projects.html" class="btn btn-primary">Explore Case Studies</a>
+                        <a href="#interactive-map" class="btn btn-secondary">Inspect Web-GIS Map</a>
                         <a
                             href="https://www.linkedin.com/in/harpreet-singh-894583255/"
-                            class="btn btn-outline"
+                            class="btn btn-secondary"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             LinkedIn
                         </a>
                     </div>
+
+                    <div class="coord-strip">
+                        <span>DATUM: <strong>WGS 84 / NAD83</strong></span>
+                        <span>&middot;</span>
+                        <span>STACK: <strong>ArcGIS Pro &middot; ArcPy &middot; FME &middot; Leaflet</strong></span>
+                    </div>
                 </div>
 
-                <aside class="hero-panel">
-                    <strong>Current Focus</strong>
-
-                    <ul>
-                        <li>Municipal GIS and planning support</li>
-                        <li>Spatial analysis and cartography</li>
-                        <li>Python and ArcPy automation</li>
-                        <li>FME and FME Flow workflows</li>
-                        <li>ArcGIS Online and web GIS</li>
-                        <li>Spatial-data management and quality control</li>
+                <aside class="hero-panel" aria-label="Engineering specification summary">
+                    <div class="hero-panel-header">
+                        <span class="hero-panel-title">Operational Profile</span>
+                        <span class="status-pill">Available for GIS Roles</span>
+                    </div>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-key">Municipal Experience</span>
+                            <span class="spec-val">Rocky View County</span>
+                        </li>
+                        <li>
+                            <span class="spec-key">GIS Education</span>
+                            <span class="spec-val">BGIS &middot; SAIT</span>
+                        </li>
+                        <li>
+                            <span class="spec-key">CIS Foundation</span>
+                            <span class="spec-val">Diploma &middot; KPU</span>
+                        </li>
+                        <li>
+                            <span class="spec-key">Automation</span>
+                            <span class="spec-val">Python / ArcPy / FME</span>
+                        </li>
+                        <li>
+                            <span class="spec-key">Web &amp; Field GIS</span>
+                            <span class="spec-val">AGOL / ExB / Field Maps</span>
+                        </li>
+                        <li>
+                            <span class="spec-key">Data Formats</span>
+                            <span class="spec-val">FGDB / GeoJSON / GTFS</span>
+                        </li>
                     </ul>
                 </aside>
-
             </div>
         </section>
 
-        <!-- Professional introduction -->
-        <section>
+        <!-- Interactive Featured Map Component -->
+        <section id="interactive-map">
             <div class="container">
-
-                <h2>GIS with a Technical Foundation</h2>
-
-                <p class="section-intro">
-                    My background combines Geographic Information Systems and
-                    Computer Science. I use spatial thinking, programming,
-                    cartographic design, web GIS, and workflow automation to
-                    support real operational and decision-making requirements.
-                </p>
-
-                <div class="grid-4">
-
-                    <div class="card">
-                        <h3>Municipal GIS</h3>
-
-                        <p>
-                            Planning support, custom mapping, public GIS
-                            inquiries, spatial-data management, and operational
-                            decision support.
+                <div class="section-header-row">
+                    <div>
+                        <div class="eyebrow">Interactive Web-GIS Demo</div>
+                        <h2>Calgary Transit Catchment Explorer</h2>
+                        <p class="section-intro">
+                            Live Leaflet map consuming a structured GeoJSON layer
+                            (<code>./assets/data/sample-gis-layer.geojson</code>) with basemap
+                            switching, layer toggles, attribute popups, and real-time cursor
+                            coordinates.
                         </p>
                     </div>
+                    <a href="./projects/transit.html" class="btn btn-secondary btn-small">
+                        Read Transit Case Study &rarr;
+                    </a>
+                </div>
 
-                    <div class="card">
-                        <h3>Spatial Analysis</h3>
+                <div class="map-showcase">
+                    <div class="map-toolbar">
+                        <div class="map-toolbar-group" role="group" aria-label="Basemap switcher">
+                            <span class="toolbar-label">Basemap:</span>
+                            <button type="button" class="map-btn" data-basemap="light" aria-pressed="true">
+                                Light Canvas
+                            </button>
+                            <button type="button" class="map-btn" data-basemap="dark" aria-pressed="false">
+                                Dark Canvas
+                            </button>
+                            <button type="button" class="map-btn" data-basemap="street" aria-pressed="false">
+                                Street
+                            </button>
+                            <button type="button" class="map-btn" data-basemap="satellite" aria-pressed="false">
+                                Satellite
+                            </button>
+                        </div>
 
-                        <p>
-                            Spatial and attribute queries, geoprocessing,
-                            proximity analysis, joins, summaries, and geographic
-                            interpretation.
-                        </p>
+                        <div class="map-toolbar-group">
+                            <button type="button" class="map-btn" id="map-reset-btn">
+                                Reset Extent
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="card">
-                        <h3>Automation</h3>
+                    <div class="map-workspace">
+                        <div class="map-canvas-wrap">
+                            <div id="gis-map" role="region" aria-label="Interactive Calgary transit spatial analysis map"></div>
+                        </div>
 
-                        <p>
-                            Python, ArcPy, FME, and FME Flow workflows designed
-                            to reduce repetitive work and improve consistency.
-                        </p>
+                        <aside class="map-sidebar" aria-label="Map layer controls">
+                            <div>
+                                <h3>Operational Layers</h3>
+                                <p class="text-muted" style="font-size: 0.82rem; margin-bottom: 0.75rem;">
+                                    Toggle vector layers or click any feature to inspect its attribute schema.
+                                </p>
+
+                                <div class="layer-toggle-list">
+                                    <label class="layer-toggle">
+                                        <span class="layer-toggle-left">
+                                            <span class="layer-swatch point" aria-hidden="true"></span>
+                                            <span>Transit Stations (Points)</span>
+                                        </span>
+                                        <input type="checkbox" data-layer-toggle="stations" checked>
+                                    </label>
+
+                                    <label class="layer-toggle">
+                                        <span class="layer-toggle-left">
+                                            <span class="layer-swatch line" aria-hidden="true"></span>
+                                            <span>Priority Corridor (Line)</span>
+                                        </span>
+                                        <input type="checkbox" data-layer-toggle="corridors" checked>
+                                    </label>
+
+                                    <label class="layer-toggle">
+                                        <span class="layer-toggle-left">
+                                            <span class="layer-swatch polygon" aria-hidden="true"></span>
+                                            <span>800m Catchments (Polygons)</span>
+                                        </span>
+                                        <input type="checkbox" data-layer-toggle="buffers" checked>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="map-meta-box">
+                                <p><strong>Source:</strong> <code>sample-gis-layer.geojson</code></p>
+                                <p><strong>CRS:</strong> <span class="mono">EPSG:4326 (WGS 84)</span></p>
+                                <p><strong>Render:</strong> <span class="mono">Leaflet 1.9.4 Canvas/SVG</span></p>
+                                <p class="text-muted">
+                                    Modularized in <code>js/map-showcase.js</code> for drop-in GeoJSON replacement.
+                                </p>
+                            </div>
+                        </aside>
                     </div>
 
-                    <div class="card">
-                        <h3>Web GIS</h3>
-
-                        <p>
-                            ArcGIS Online, Experience Builder, Field Maps, web
-                            maps, and task-focused geographic applications.
-                        </p>
+                    <div class="map-statusbar">
+                        <span>
+                            CURSOR: <span class="map-coords" id="map-cursor-coords">51.05050&deg; N, 114.06650&deg; W</span>
+                        </span>
+                        <span>
+                            PROJECTION: <span class="mono">EPSG:4326 / Web Mercator (EPSG:3857)</span> &middot;
+                            <span id="map-zoom-level">Z13</span>
+                        </span>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Featured projects -->
+        <!-- Featured Projects -->
         <section class="bg-offset">
             <div class="container">
-
-                <h2>Featured Work</h2>
-
-                <p class="section-intro">
-                    A focused selection demonstrating professional GIS practice,
-                    automation, spatial analysis, transportation data, and
-                    geospatial communication.
-                </p>
+                <div class="section-header-row">
+                    <div>
+                        <div class="eyebrow">Selected Engineering Work</div>
+                        <h2>Featured Case Studies</h2>
+                        <p class="section-intro">
+                            Structured around operational problems, spatial data pipelines, automation
+                            architecture, and concrete deliverables.
+                        </p>
+                    </div>
+                    <a href="./projects.html" class="btn btn-primary btn-small">
+                        View All Projects &rarr;
+                    </a>
+                </div>
 
                 <div class="grid-3">
-
                     <!-- Practicum -->
                     <article class="card project-card">
-
                         <div class="project-visual">
-                            GIS PRACTICUM
+                            <div class="project-visual-meta">
+                                <span>MUNICIPAL GIS</span>
+                                <span>ROCKY VIEW COUNTY</span>
+                            </div>
+                            <div class="project-visual-title">PLANNING &amp; AUTOMATION PRACTICUM</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Municipal GIS • Professional Practice
-                            </span>
-
-                            <h3>
-                                GIS Practicum at Rocky View County
-                            </h3>
-
-                            <p>
-                                Supported municipal GIS operations through
-                                planning map sets, spatial queries, custom
-                                mapping, public GIS inquiries, web and field
-                                applications, and Python and FME automation.
+                            <span class="project-category">Municipal GIS &middot; Planning &middot; Automation</span>
+                            <h3>GIS Practicum at Rocky View County</h3>
+                            <p class="project-summary">
+                                Supported municipal planning and operations through circulation map sets,
+                                custom-radius property queries, public GIS support, web/field apps, and
+                                Python/FME workflows.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Multi-department mapping &amp; ad-hoc data requests</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>ArcGIS Pro + FME validation + AGOL/ExB</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Standardized map sets &amp; repeatable workflows</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">ArcGIS Pro</span>
-                                <span class="tag">Planning Support</span>
-                                <span class="tag">Web GIS</span>
                                 <span class="tag">Python</span>
-                                <span class="tag">FME</span>
+                                <span class="tag">FME Flow</span>
+                                <span class="tag">Experience Builder</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/practicum.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Practicum
+                                <a href="./projects/practicum.html" class="btn btn-primary btn-small">
+                                    Read Case Study
                                 </a>
                             </div>
-
                         </div>
                     </article>
 
-                    <!-- Crime automation -->
+                    <!-- Crime Automation -->
                     <article class="card project-card">
-
                         <div class="project-visual">
-                            CRIME ANALYSIS + ARCPY
+                            <div class="project-visual-meta">
+                                <span>ARCPY PIPELINE</span>
+                                <span>FGDB AUTOMATION</span>
+                            </div>
+                            <div class="project-visual-title">CRIME INCIDENT SPATIAL WORKFLOW</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Spatial Analysis • Automation
-                            </span>
-
-                            <h3>
-                                Crime Incident Analysis Workflow
-                            </h3>
-
-                            <p>
-                                An ArcPy workflow for organizing crime incidents,
-                                completing spatial joins, producing summary
-                                tables, sorting results, and cleaning a project
-                                geodatabase.
+                            <span class="project-category">Spatial Analysis &middot; Python &amp; ArcPy</span>
+                            <h3>Crime Incident Analysis &amp; ArcPy Automation</h3>
+                            <p class="project-summary">
+                                End-to-end ArcPy script automating incident ingestion, spatial joins to
+                                precincts, summary statistics, descending ranking, and intermediate FGDB cleanup.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Manual multi-layer incident aggregation</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>SpatialJoin &rarr; SummaryStats &rarr; Sort &rarr; Clean</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>Zero-touch reproducible FGDB deliverables</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">Python</span>
                                 <span class="tag">ArcPy</span>
                                 <span class="tag">Spatial Join</span>
-                                <span class="tag">Geodatabases</span>
+                                <span class="tag">File Geodatabase</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/crime-automation.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Project
+                                <a href="./projects/crime-automation.html" class="btn btn-primary btn-small">
+                                    Inspect Code &amp; Pipeline
                                 </a>
                             </div>
-
                         </div>
                     </article>
 
                     <!-- Transit -->
                     <article class="card project-card">
-
                         <div class="project-visual">
-                            TRANSIT DATA + GIS
+                            <div class="project-visual-meta">
+                                <span>TRANSPORTATION</span>
+                                <span>GTFS &middot; CALGARY</span>
+                            </div>
+                            <div class="project-visual-title">CALGARY TRANSIT &amp; REAL-TIME DATA</div>
                         </div>
 
                         <div class="project-content">
-
-                            <span class="project-category">
-                                Transportation • Data
-                            </span>
-
-                            <h3>
-                                Calgary Transit GIS and Real-Time Data
-                            </h3>
-
-                            <p>
-                                A GIS exploration of static and real-time
-                                transportation data using ArcGIS, Python, and
-                                GTFS concepts.
+                            <span class="project-category">Transportation GIS &middot; Data Modeling</span>
+                            <h3>Calgary Transit GIS &amp; Real-Time Data</h3>
+                            <p class="project-summary">
+                                Structuring static GTFS feeds and real-time transit concepts in ArcGIS Pro
+                                and Python to model stop catchments, route coverage, and service frequency.
                             </p>
+
+                            <div class="pipeline-mini">
+                                <div><span class="pipeline-label">PROBLEM</span><span>Connecting tabular GTFS feeds to spatial catchments</span></div>
+                                <div><span class="pipeline-label">PIPELINE</span><span>GTFS CSV/TXT &rarr; Python ETL &rarr; GeoJSON / ArcGIS</span></div>
+                                <div><span class="pipeline-label">RESULT</span><span>800m walk-shed &amp; corridor coverage prototype</span></div>
+                            </div>
 
                             <div class="project-tags">
                                 <span class="tag">ArcGIS Pro</span>
                                 <span class="tag">Python</span>
                                 <span class="tag">GTFS</span>
-                                <span class="tag">Transportation</span>
+                                <span class="tag">GeoJSON</span>
                             </div>
 
                             <div class="project-actions">
-                                <a
-                                    href="projects/transit.html"
-                                    class="btn btn-primary btn-small"
-                                >
-                                    View Project
+                                <a href="./projects/transit.html" class="btn btn-primary btn-small">
+                                    Read Case Study
                                 </a>
                             </div>
-
                         </div>
                     </article>
-
                 </div>
-
-                <div class="section-action">
-                    <a
-                        href="projects.html"
-                        class="btn btn-dark"
-                    >
-                        View All Projects
-                    </a>
-                </div>
-
             </div>
         </section>
 
-        <!-- Practicum highlight -->
+        <!-- Practicum Highlight -->
         <section>
             <div class="container experience">
-
                 <div class="experience-badge">
-                    <span class="experience-label">
-                        Professional Experience
-                    </span>
-
-                    <strong>
-                        Rocky View County
-                    </strong>
-
+                    <span class="experience-label">Municipal GIS Practicum</span>
+                    <strong>Rocky View County</strong>
                     <p>
-                        Municipal GIS practicum in an operational county
-                        environment.
+                        Embedded within a municipal GIS team supporting planning, assessment
+                        queries, cartographic production, and automation workflows.
                     </p>
                 </div>
 
                 <div>
-                    <h2>Real-World Municipal GIS Experience</h2>
-
+                    <h2>Operational Municipal GIS Experience</h2>
                     <p>
-                        During my practicum, I worked alongside GIS professionals
-                        and supported planning, data-management, mapping,
-                        automation, public-service, web GIS, and field GIS
-                        requirements.
-                    </p>
-
-                    <p>
-                        The experience strengthened my understanding of how GIS
-                        data and applications support planning, operations,
-                        public inquiries, organizational workflows, and
-                        evidence-based decision-making.
+                        During my practicum at Rocky View County, I worked alongside GIS analysts and
+                        specialists to fulfill internal departmental requests and public mapping
+                        inquiries. Work spanned standardized planning circulation map sets,
+                        custom-radius property ownership queries, ArcGIS Online / Experience Builder
+                        applications, Field Maps support, and Python/FME automation.
                     </p>
 
                     <div class="callout">
-                        Internal datasets, restricted property information,
-                        organizational workflows, and confidential deliverables
-                        are not published in this portfolio.
+                        <strong>Data Governance Note:</strong> Internal County datasets, restricted
+                        property records, internal URLs, and confidential deliverables are excluded
+                        from this public repository.
                     </div>
 
                     <div class="hero-actions">
-                        <a
-                            href="projects/practicum.html"
-                            class="btn btn-primary"
-                        >
+                        <a href="./projects/practicum.html" class="btn btn-primary">
                             Read the Practicum Case Study
+                        </a>
+                        <a href="./about.html" class="btn btn-secondary">
+                            View Full Capability Matrix
                         </a>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Skills -->
+        <!-- Technical Capabilities Matrix -->
         <section id="skills" class="bg-offset">
             <div class="container">
+                <div class="eyebrow">Technical Stack</div>
+                <h2>Core GIS &amp; Engineering Capabilities</h2>
+                <p class="section-intro">
+                    Organized by operational domain rather than arbitrary progress bars.
+                </p>
 
-                <h2>Technical Skills</h2>
-
-                <div class="skills-grid">
-
-                    <div class="skill-category">
-                        <h3>GIS</h3>
-
-                        <ul class="skill-list">
-                            <li>ArcGIS Pro</li>
-                            <li>ArcGIS Online</li>
-                            <li>Spatial analysis</li>
-                            <li>Geoprocessing</li>
-                            <li>Cartography</li>
-                            <li>Geodatabases</li>
-                            <li>Coordinate systems</li>
-                        </ul>
+                <div class="matrix-grid">
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>GIS &amp; Cartography</h3>
+                            <span class="matrix-code">DOMAIN // 01</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Desktop GIS &amp; Layouts</span>
+                                <span class="matrix-detail">ArcGIS Pro &middot; Map Series</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Spatial Analysis</span>
+                                <span class="matrix-detail">Joins &middot; Buffers &middot; Overlay</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Coordinate Systems</span>
+                                <span class="matrix-detail">NAD83 3TM &middot; UTM &middot; WGS 84</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Remote Sensing</span>
+                                <span class="matrix-detail">Imagery &middot; Classification</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Automation</h3>
-
-                        <ul class="skill-list">
-                            <li>Python</li>
-                            <li>ArcPy</li>
-                            <li>FME</li>
-                            <li>FME Flow</li>
-                            <li>Data processing</li>
-                            <li>Workflow automation</li>
-                            <li>Quality control</li>
-                        </ul>
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Scripting &amp; Automation</h3>
+                            <span class="matrix-code">DOMAIN // 02</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Python &amp; ArcPy</span>
+                                <span class="matrix-detail">Geoprocessing &middot; Cursors</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">FME &amp; FME Flow</span>
+                                <span class="matrix-detail">ETL &middot; Schema Validation</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Quality Control</span>
+                                <span class="matrix-detail">Topology &middot; Field Cleanup</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Version Control</span>
+                                <span class="matrix-detail">Git &middot; GitHub &middot; VS Code</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Web and Field GIS</h3>
-
-                        <ul class="skill-list">
-                            <li>ArcGIS Experience Builder</li>
-                            <li>ArcGIS Field Maps</li>
-                            <li>Web maps</li>
-                            <li>ArcGIS StoryMaps</li>
-                            <li>HTML and CSS</li>
-                            <li>JavaScript foundations</li>
-                        </ul>
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Databases &amp; ETL</h3>
+                            <span class="matrix-code">DOMAIN // 03</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Geodatabases</span>
+                                <span class="matrix-detail">File Geodatabase (FGDB)</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Open Spatial Formats</span>
+                                <span class="matrix-detail">GeoJSON &middot; CSV &middot; Shapefile</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Transit Data Models</span>
+                                <span class="matrix-detail">GTFS Static &amp; Real-Time</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Tabular Querying</span>
+                                <span class="matrix-detail">SQL &middot; Attribute Joins</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Data and Technology</h3>
-
-                        <ul class="skill-list">
-                            <li>Spatial and tabular data</li>
-                            <li>File geodatabases</li>
-                            <li>CSV and GeoJSON</li>
-                            <li>GTFS concepts</li>
-                            <li>Git and GitHub</li>
-                            <li>VS Code</li>
-                            <li>SQL concepts</li>
-                        </ul>
+                    <div class="matrix-card">
+                        <div class="matrix-card-header">
+                            <h3>Web-GIS &amp; Development</h3>
+                            <span class="matrix-code">DOMAIN // 04</span>
+                        </div>
+                        <div class="matrix-rows">
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Esri Web &amp; Field</span>
+                                <span class="matrix-detail">AGOL &middot; ExB &middot; Field Maps</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Open-Source Web Mapping</span>
+                                <span class="matrix-detail">Leaflet &middot; GeoJSON APIs</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Frontend Foundations</span>
+                                <span class="matrix-detail">Semantic HTML5 &middot; CSS &middot; JS</span>
+                            </div>
+                            <div class="matrix-row">
+                                <span class="matrix-skill">Storytelling</span>
+                                <span class="matrix-detail">ArcGIS StoryMaps</span>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -496,70 +574,56 @@
         <!-- Contact -->
         <section id="contact">
             <div class="container contact-section">
-
                 <div>
-                    <div class="eyebrow dark-eyebrow">
-                        Contact
-                    </div>
-
-                    <h2>Let’s Connect</h2>
-
+                    <div class="eyebrow">Contact</div>
+                    <h2>Open to GIS Analyst &amp; Automation Roles</h2>
                     <p>
-                        I am interested in GIS analyst opportunities where
-                        spatial analysis, data management, cartography, web GIS,
-                        and automation support practical decision-making.
+                        Available for municipal, environmental, utility, and transportation GIS roles
+                        requiring spatial analysis, data management, cartography, and Python/FME
+                        automation.
                     </p>
                 </div>
 
-                <div class="hero-actions">
-
-                    <!-- Replace this email with your preferred public email -->
-                    <a
-                        href="mailto:yourname123@duck.com"
-                        class="btn btn-primary"
-                    >
+                <div class="hero-actions" style="margin-top: 0;">
+                    <a href="mailto:harpreet.spurewal@gmail.com" class="btn btn-primary">
                         Email Me
                     </a>
-
                     <a
                         href="https://www.linkedin.com/in/harpreet-singh-894583255/"
-                        class="btn btn-dark"
+                        class="btn btn-secondary"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         LinkedIn
                     </a>
-
                     <a
                         href="https://github.com/harpreet100"
-                        class="btn btn-dark"
+                        class="btn btn-secondary"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         GitHub
                     </a>
-
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="footer">
         <div class="container footer-row">
-
-            <span>
-                © <span data-year></span> Harpreet Singh
-            </span>
-
-            <span>
-                GIS • Spatial Analysis • Automation
-            </span>
-
+            <span>&copy; <span data-year></span> Harpreet Singh</span>
+            <span class="mono">GIS &middot; Spatial Analysis &middot; Automation</span>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Leaflet JS -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/map-showcase.js"></script>
 </body>
 
 </html>

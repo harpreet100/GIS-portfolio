@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Cartographic Editorial Design Tokens
+   Default: High-contrast Light Mode (Topographic Paper)
+   Optional: Dark Mode via [data-theme="dark"] persisted in localStorage
+   ========================================================================== */
+
+:root {
+    /* Surfaces */
+    --bg-paper: #F8F9FA;
+    --bg-surface: #FFFFFF;
+    --bg-offset: #F1F5F9;
+    --bg-elevated: #FFFFFF;
+
+    /* Ink / Typography */
+    --ink-primary: #0F172A;
+    --ink-secondary: #334155;
+    --ink-muted: #475569;
+
+    /* Hairlines & Borders */
+    --border-hairline: #CBD5E1;
+    --border-strong: #94A3B8;
+
+    /* Cartographic Accents */
+    --accent-primary: #0F766E;
+    --accent-primary-hover: #115E59;
+    --accent-teal-bg: #CCFBF1;
+    --accent-teal-ink: #115E59;
+
+    --accent-amber: #D97706;
+    --accent-amber-bg: #FEF3C7;
+    --accent-amber-ink: #92400E;
+
+    /* Code & Map Readouts */
+    --code-bg: #0F172A;
+    --code-ink: #E2E8F0;
+    --code-border: #1E293B;
+    --inline-code-bg: #E2E8F0;
+    --inline-code-ink: #0F172A;
+
+    /* Shadows (Restrained, editorial) */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07);
+    --shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.1);
+
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Radii & Spacing */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --header-height: 68px;
+
+    /* Topographic pattern opacity */
+    --topo-stroke: rgba(15, 23, 42, 0.06);
+    --grid-stroke: rgba(15, 118, 110, 0.08);
+}
+
+[data-theme="dark"] {
+    /* Surfaces */
+    --bg-paper: #0B1120;
+    --bg-surface: #111827;
+    --bg-offset: #172033;
+    --bg-elevated: #1E293B;
+
+    /* Ink / Typography */
+    --ink-primary: #F1F5F9;
+    --ink-secondary: #CBD5E1;
+    --ink-muted: #94A3B8;
+
+    /* Hairlines & Borders */
+    --border-hairline: #293548;
+    --border-strong: #475569;
+
+    /* Cartographic Accents */
+    --accent-primary: #2DD4BF;
+    --accent-primary-hover: #14B8A6;
+    --accent-teal-bg: rgba(45, 212, 191, 0.14);
+    --accent-teal-ink: #5EEAD4;
+
+    --accent-amber: #F59E0B;
+    --accent-amber-bg: rgba(245, 158, 11, 0.14);
+    --accent-amber-ink: #FCD34D;
+
+    /* Code & Map Readouts */
+    --code-bg: #070B14;
+    --code-ink: #E2E8F0;
+    --code-border: #293548;
+    --inline-code-bg: #1E293B;
+    --inline-code-ink: #5EEAD4;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
+
+    /* Topographic pattern opacity */
+    --topo-stroke: rgba(241, 245, 249, 0.05);
+    --grid-stroke: rgba(45, 212, 191, 0.08);
+}
